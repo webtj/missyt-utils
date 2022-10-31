@@ -1,0 +1,14 @@
+{
+  "name": "missyt-utils",
+  "version": "0.0.1",
+  "description": "missyt-utils 常用的工具方法",
+  "main": "dist/missyt-utils.js",
+  "keyworks": [
+    "missyt-utils"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "taojian",
+  "license": "MIT"
+}
