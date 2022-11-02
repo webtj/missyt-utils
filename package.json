@@ -2,7 +2,7 @@
   "name": "missyt-utils",
   "version": "0.0.1",
   "description": "missyt-utils 常用的工具方法",
-  "main": "dist/missyt-utils.umd.js",
+  "main": "dist/index.cjs.js",
   "keyworks": [
     "missyt-utils"
   ],
