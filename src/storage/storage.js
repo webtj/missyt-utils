@@ -83,5 +83,7 @@ class Storage {
   }
 }
 
-export { Storage };
+const _loaclStorage = new Storage('local');
+const _sessionStorage = new Storage('session');
+export { _loaclStorage as local, _sessionStorage as session, Storage };
 

@@ -6,44 +6,21 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <script src="../dist/missyt-utils.js"></script>
+  <!-- <script src="https://requirejs.org/docs/release/2.3.6/minified/require.js"></script> -->
 </head>
-<style>
-  .xx {
-    border: 1px solid red;
-    width: 200px;
-    height: 300px;
-  }
-
-  .oo {
-    border: 1px solid blue;
-    width: 200px;
-    height: 300px;
-    margin-top: 1000px;
-  }
-
-  body {
-    background-color: #000;
-  }
-</style>
 
 <body>
   <div class="xx"></div>
   <div class="oo"></div>
-  <script>
-    const { deepClone } = mUtils;
-    let a = [1, 2, 3, {
-      xx: 1,
-      oo: 2
-    }]
-
-    let b = deepClone(a);
-    b[3].xx = 100;
-    console.log(a);
-
-    let c = deepClone(new Date())
-    console.log(c);
-
+  <script type="module">
+    // require(['../dist/index.umd.js'], function (x) {
+    //   console.log(x)
+    // })
+    import { local, session } from '../dist/index.esm.js'
+    local.set('xx', '123')
+    session.set('oo', '456')
+    local.remove('xx')
+    session.remove('oo')
   </script>
 
 </body>
