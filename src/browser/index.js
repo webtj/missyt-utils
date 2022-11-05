@@ -47,14 +47,12 @@ const getBrowserInfo = () => {
 
 //https://developer.mozilla.org/zh-CN/docs/Web/API/Fullscreen_API
 //判断是否全屏
-const isFullScreen = () => {
-  return !!(
-    document.fullscreenElement ||
-    document.mozFullScreenElement ||
-    document.webkitFullscreenElement ||
-    document.msFullscreenElement
-  );
-}
+const isFullScreen = !!(
+  document.fullscreenElement ||
+  document.mozFullScreenElement ||
+  document.webkitFullscreenElement ||
+  document.msFullscreenElement
+)
 
 /**
  * 某个容器全屏
