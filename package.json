@@ -1,8 +1,14 @@
 {
   "name": "missyt-utils",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "missyt-utils 常用的工具方法",
   "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "browser": "dist/index.umd.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "keyworks": [
     "missyt-utils"
   ],

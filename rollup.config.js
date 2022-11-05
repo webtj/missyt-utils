@@ -7,20 +7,21 @@ import json from '@rollup/plugin-json';
 // node-resolve插件，将第三方模块转换为ES6模块
 import resolve from '@rollup/plugin-node-resolve';
 import { terser } from 'rollup-plugin-terser';
+import pkg from './package.json';
 
 export default {
   input: 'src/index.js',
   output: [
     {
-      file: 'dist/index.cjs.js',
+      file: pkg.main,
       format: 'cjs'
     },
     {
-      file: 'dist/index.esm.js',
+      file: pkg.module,
       format: 'esm'
     },
     {
-      file: 'dist/index.umd.js',
+      file: pkg.browser,
       format: 'umd',
       name: 'Mutils'
     }
