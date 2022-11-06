@@ -1,5 +1,5 @@
 /**
- * 
+ * 深拷贝
  * @param {object} obj 待复制的对象
  * @param {WeakMap} cache  循环引用内存溢出，使用WeakMap缓存
  * @returns 靠背后的对象

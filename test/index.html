@@ -10,17 +10,43 @@
 </head>
 
 <body>
-  <div class="xx"></div>
+  <div class="missyt" name="hello-missyt" aria-readonly="true"></div>
   <div class="oo"></div>
   <script type="module">
     // require(['../dist/index.umd.js'], function (x) {
     //   console.log(x)
     // })
-    import { local, session } from '../dist/index.esm.js'
-    local.set('xx', '123')
-    session.set('oo', '456')
-    local.remove('xx')
-    session.remove('oo')
+    import { Pubsub, deepClone, formatDate, diffDays, getRandomString, getRandomInt, getImageSizeByUrl, downloadImage } from '../dist/index.esm.js'
+
+    Pubsub.subscribe('login', data => {
+      console.log('subscribe 1', data);
+    })
+
+    Pubsub.subscribe('login', data => {
+      console.log('subscribe 2', data);
+    })
+
+    Pubsub.subscribe('refresh', data => {
+      console.log('refresh 1', data);
+    })
+    Pubsub.unscribe('refresh');
+    Pubsub.unscribe('token_1329');
+
+    console.log(formatDate('2019-12-29 23:35:17', 'dd-MM-yy hh:mm'))
+
+    console.log(diffDays(new Date('2022-10-25 13:34:10'), new Date('2022-10-30 13:34:10')));
+
+    console.log(getRandomString(8));
+
+    console.log(getImageSizeByUrl('https://sponsors.vuejs.org/images/xitujuejinjishushequ.avif').then(res => console.log(res)))
+
+    downloadImage('https://sponsors.vuejs.org/images/xitujuejinjishushequ.avif', 'vue.avif');
+
+    let person = { name: 'hello', hobby: { name: '篮球', time: 3 } };
+    let _copy = deepClone(person);
+    person.hobby.name = '羽毛球';
+    console.log(_copy); //{ name: 'hello', hobby: { name: '篮球', time: 3 } }
+
   </script>
 
 </body>

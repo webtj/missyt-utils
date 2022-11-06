@@ -6,6 +6,7 @@ const EventBus = {
   on: function (type, callback) {//绑定注册事件
     if (this.callbacks[type]) this.callbacks[type].push(callback)
     else this.callbacks[type] = [callback]
+    return this.callbacks[type];
   },
   emit: function (type, data) {//触发事件
     if (this.callbacks[type] && this.callbacks[type].length > 0) {

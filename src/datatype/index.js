@@ -17,8 +17,6 @@ const isWeakMap = (value) => getTag(value) === 'WeakMap';
 const isSet = (value) => getTag(value) === 'Set';
 const isWeakSet = (value) => getTag(value) === 'WeakSet';
 const isPromise = (value) => getTag(value) === 'Promise';
-const isGenerator = (value) => getTag(value) === 'Generator';
-
 
 export {
   isNumber,
@@ -37,6 +35,5 @@ export {
   isWeakMap,
   isSet,
   isWeakSet,
-  isPromise,
-  isGenerator
+  isPromise
 };

@@ -32,3 +32,9 @@ const getRandomString = (len = 16) => {
   str += getRandomString(len - str.length);
   return str;
 }
+
+export {
+  getRandomColor,
+  getRandomInt,
+  getRandomString
+}

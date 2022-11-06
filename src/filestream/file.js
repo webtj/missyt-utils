@@ -9,6 +9,7 @@ const fileToBase64 = (file) => {
     reader.readAsDataURL(file);
   });
 }
+
 //base64转file
 const base64ToFile = (dataurl, filename) => {
   let arr = dataurl.split(','),
