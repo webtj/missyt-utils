@@ -6,7 +6,8 @@ titleTemplate: 常用的js工具库
 
 hero:
   name: mutils
-  text: 一个开箱即用工具库
+  text: 一个简单的工具库
+  tagline: 与其频繁的去百度，不如自己写个库，skr~
   actions:
     - theme: brand
       text: 快速上手 ->
@@ -17,12 +18,9 @@ hero:
 
 features:
   - title: 易用
-    details: 基于Javascript编写，Rollup打包：cjs/umd/es module，安装即用
+    details: 基于Javascript编写，Rollup打包：cjs/umd/es module，开箱即用
   - title: 简单
     details: 代码简单，不求大而全，只为实用。不重复造轮子
-  - title: 押韵
-    details: 与其频繁的百度，不如自己写个库，押韵不? skr~
-  - title: 后续？
-    details: Typescript改造下、vscode代码提示、代码逻辑优化
-   
+  - title: 后续
+    details: Typescript改造、vscode代码提示优化、补充更多的代码片段...
 ---
