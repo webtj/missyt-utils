@@ -7,9 +7,9 @@
  * @funcs getOS
  * @param null
  * @return {String} 
- * @example const os = getOS()
  */
-//Windows Phone|Symbian|Tablet|Ios|Android|FireFox|Chrome|Pc|Unkonwn
+  const os = getOS();
+  //return Windows Phone|Symbian|Tablet|Ios|Android|FireFox|Chrome|Pc|Unkonwn
 ```
 
 ## isWeiXin
@@ -19,8 +19,8 @@
  * @funcs isWeiXin
  * @param null
  * @return {Boolean} true/false 
- * @example const iswx = isWeiXin()
  */
+  const iswx = isWeiXin();
 ```
 
 
@@ -31,6 +31,6 @@
  * @funcs isMobile
  * @param null
  * @return {Boolean} true/false 
- * @example const ismobile = isMobile()
  */
+  const ismobile = isMobile();
 ```

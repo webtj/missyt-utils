@@ -7,8 +7,12 @@
  * @funcs $
  * @param {String} #id .class tag ..
  * @return {Element} dom元素
- * @example $('#bid') $('.class') $('input') $('input[type="text"]') $('ul li')
  */
+  let dom1 = $('#bid');
+  let dom2 = $('.class');
+  let dom3 = $('input');
+  let dom4 = $('input[type="text"]');
+  let dom5 = $('ul li'); //即使存在多个也只返回第一个li元素
 ```
 
 ## $$ el选择器集合
@@ -20,6 +24,11 @@
  * @return {Array<Element>} dom元素集合
  * @example $$('ul li')
  */
+  const lidoms = $$('ul li');
+  //给每个li绑定一个click事件
+  Array.from(lidoms).forEach(_liItem => {
+    _liItem.addEventLinster('click',function(e){});
+  })
 ```
 
 ## setStyle
@@ -30,14 +39,14 @@
  * @param {Element} dom节点
  * @param {Object} style属性对象
  * @return null
- * @example 
- *  setStyle(document.getElementById('test'),{
- *    width:'30px',
- *    height:'40px',
- *    borderRadius:'5px',
- *    color:'red'
- * })
  */
+  //为id为test的元素设置样式
+   setStyle($('#test'),{
+     width:'30px',
+     height:'40px',
+     borderRadius:'5px',
+     color:'red'
+  })
 ```
 
 ## getStyle
@@ -48,9 +57,8 @@
  * @param {Element} el dom节点
  * @param {string} style style样式属性
  * @return 返回元素的制定样式
- * @example 获取id为test的元素的width
- * getStyle(document.getElementById('test'),'width')
  */
+  getStyle($('#test'),'width'); //获取id为test的元素的width
 ```
 
 ## getClass
@@ -60,8 +68,8 @@
  * @funcs getClass
  * @param {Element} el dom节点
  * @return 返回元素的class属性的值
- * @example getClass($('#id'))
  */
+  const className = getClass($('#id'));
 ```
 
 ## hasClass
@@ -72,9 +80,9 @@
  * @param {Element} el dom节点
  * @param {String} className
  * @return {Boolean} true/false
- * @example 判断是否有 col-12 class
- * hasClass(document.getElementById('#test'),'col-12')  //true or false
  */
+  //判断是否有 col-12 class
+  hasClass($('#test'),'col-12')  //true or false
 ```
 
 ## removeClass
@@ -85,9 +93,8 @@
  * @param {Element} el dom节点
  * @param {String} className
  * @return null
- * @example 移除 col-12 class
- * removeClass(document.getElementById('#test'),'col-12')
  */
+  removeClass($('#test'),'col-12'); //移除 col-12 class
 ```
 
 ## setAttr
@@ -98,12 +105,12 @@
  * @param {Element} dom节点
  * @param {Object} 属性对象和值
  * @return null
- * @example 设置id为aa的元素属性
- *  setAttr(document.getElementById('aa'),{
- *    href:'www.baidu.com',
- *    target:'_blank'
- * })
  */
+  //设置id为aa的元素属性
+  setAttr($('a'),{
+    href:'www.baidu.com',
+    target:'_blank'
+ })
 ```
 
 ## getAttr
@@ -114,9 +121,8 @@
  * @param {Element} el dom节点
  * @param {String} attrName
  * @return null
- * @example 获取test元素name属性值
- * getAttr(document.getElementById('#test'),'name')
  */
+ getAttr($('#test'),'name'); //获取test元素name属性值
 ```
 
 ## removeAttr
@@ -127,9 +133,8 @@
  * @param {Element} el dom节点
  * @param {String} attrName
  * @return null
- * @example 移除name属性
- * removeAttr(document.getElementById('#test'),'name')
  */
+  removeAttr($('#test'),'name'); //移除name属性
 ```
 
 ## getAttrList
@@ -139,9 +144,9 @@
  * @funcs getAttrList
  * @param {Element} el dom节点
  * @return {Arrray<string>} 该元素所有属性数组
- * @example 获取元素属性列表
- * getAttrList(document.getElementById('#test'))
  */
+  // <div class="missyt" name="hello-missyt" aria-readonly="true"></div>
+  getAttrList($('.missyt')); //return ['class', 'name', 'aria-readonly']
 ```
 
 ## getAttrKV
@@ -152,9 +157,8 @@
  * @param {Element} el dom节点
  * @return {Arrray<object>} 该元素所有属性和属性值
  * @example 获取元素属性和属性值
- * getAttrKV(document.getElementById('#test')) 
- * return [{key:'name',value:'haha'},{key:'id',value:'test'}]
  */
+  getAttrKV($('#test')); //return [{key:'id',value:'test'}]
 ```
 
 ## elShow
@@ -164,12 +168,12 @@
  * @funcs elShow
  * @param {Element} el dom节点
  * @return {Function} callback 执行的回调方法
- * @example 当img进入可视区域时，动态给src赋值
- * elShow(imgEle,()=>{
- *    console.log('imgEle 进入可视区域了,实现懒加载了');
- *    imgEle.src = getAttr(imgEle,'data-src')
- * })
  */
+  //当img进入可视区域时，动态给src赋值
+  elShow(imgEle,()=>{
+     console.log('imgEle 进入可视区域了,实现懒加载了');
+     imgEle.src = getAttr(imgEle,'data-src');
+  })
 ```
 
 ## isShow
@@ -179,9 +183,9 @@
  * @funcs isShow
  * @param {Element} el dom节点
  * @return {Boolean} true/false
- * @example 判断image是否进入可视区域
- * isShow(document.getElementById('yimg')) //true or false
  */
+  //判断image是否进入可视区域
+  const _show = isShow(document.getElementById('yimg'));
 ```
 
 
@@ -192,7 +196,6 @@
  * @funcs removeTag
  * @param {String} 带有html标签的文本
  * @return {String} 返回去除后的text文本
- * @example 去除文本内容中的的标签
- * removeTag('<h1>dadads</h1><a>sadasd')  //'dadadssadasd'
  */
+  removeTag('<h1>dadads</h1><a>sadasd');  //'dadadssadasd'
 ```

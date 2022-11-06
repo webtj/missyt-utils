@@ -58,10 +58,54 @@ function sidebarGuide() {
       ]
     },
     {
+      text: '🚦 数据类型',
+      items: [
+        { text: 'DataType', link: '/guide/DataType' },
+      ],
+    },
+    {
       text: '🚦 本地储存',
       items: [
         { text: 'Cookie操作', link: '/guide/Cookie' },
         { text: 'Storage操作', link: '/guide/Storage' },
+      ],
+    },
+    {
+      text: '🚦 事件',
+      items: [
+        { text: '事件总线', link: '/guide/EventBus' },
+        { text: '发布订阅', link: '/guide/Pubsub' },
+      ],
+    },
+    {
+      text: '🚦 时间日期',
+      items: [
+        { text: '时间日期', link: '/guide/DateTime' },
+      ],
+    },
+    {
+      text: '🚦 随机数据',
+      items: [
+        { text: 'Random', link: '/guide/Random' },
+      ],
+    },
+    {
+      text: '🚦 文件处理',
+      items: [
+        { text: '图片image', link: '/guide/Imagestream' },
+        { text: 'file文件', link: '/guide/Filestream' },
+      ],
+    },
+    {
+      text: '🚦 工具类',
+      items: [
+        { text: 'function', link: '/guide/Function' },
+      ],
+    },
+    {
+      text: '🚦 规则校验',
+      items: [
+        { text: '常用正则', link: '/guide/Regrule' },
       ],
     }
   ]

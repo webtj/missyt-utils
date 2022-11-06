@@ -7,8 +7,10 @@
  * @var isBrowser
  * @params null
  * @return {Boolean} true/false
- * @example if(isBrowser) {...}
  */
+  if(isBrowser) {
+    console.log('哎呀，是浏览器啊！！');
+  }
 ```
 
 
@@ -20,8 +22,8 @@
  * @param null
  * @return {Object} 
  */
-const browserInfo = getBrowserInfo();
-//{"type": "Chrome","version": 107,"onLine": true,"platform": "MacIntel","cookieEnabled": true,"language": "zh-CN"}
+  const browserInfo = getBrowserInfo();
+  //return {"type": "Chrome","version": 107,"onLine": true,"platform": "MacIntel","cookieEnabled": true,"language": "zh-CN"}
 ```
 
 
@@ -32,8 +34,10 @@ const browserInfo = getBrowserInfo();
  * @var isFullScreen
  * @param null
  * @return {Boolean} true/false
- * @example if(isFullScreen) {...}
  */
+  if(isFullScreen) {
+    console.log('当前为全屏模式，嗨起来！');
+  }
 ```
 
 ## fullScreen
@@ -43,8 +47,9 @@ const browserInfo = getBrowserInfo();
  * @funcs getBrowserInfo
  * @param {Element} dom 需要设置全屏的dom元素 
  * @return null
- * @example fullScreen(document.body)
  */
+  //页面全屏
+  fullScreen(document.body);
 ```
 
 ## exitFullScreen
@@ -52,10 +57,9 @@ const browserInfo = getBrowserInfo();
 ```javascript
 /**
  * @funcs exitFullScreen
- * @param null 
  * @return null
- * @example exitFullScreen()
  */
+  exitFullScreen();
 ```
 
 
