@@ -1,4 +1,7 @@
 # missyt-utils是什么？
+
+## 请参考[开发文档](https://webtj.github.io/missyt-utils/)
+
 [missyt-utils](https://github.com/webtj/missyt-utils/)是一个`作者自认为`常用js代码工具库，一个`高级前端工程师`不屑写的工具库，不管别人怎么看，但至少方便了自己。
 ::: warning
 missyt-utils 目前仍在 `开发中` 状态. 它已经构建好了开箱即用的api，未来可能会对函数内部实现进行优化，但已实现的方法（包括方法名、入参、出参）不会变动，请放心引用。
@@ -16,6 +19,7 @@ missyt-utils 目前仍在 `开发中` 状态. 它已经构建好了开箱即用�
 ---
 
 # 快速上手
+
 ## 安装
 ```shell
   npm install missyt-utils

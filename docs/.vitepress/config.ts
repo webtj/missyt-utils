@@ -1,7 +1,7 @@
 module.exports = {
   lang: 'zh-CN',
   title: 'missyt-utils',
-  base: '/mutils',
+  base: '/missyt-utils/',
   description: 'js常用工具函数',
   lastUpdated: true,
   head: [
