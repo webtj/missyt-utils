@@ -6,7 +6,7 @@ titleTemplate: 常用的js工具库
 
 hero:
   name: mutils
-  text: 频繁的百度，不如写个库
+  text: 一个开箱即用工具库
   actions:
     - theme: brand
       text: 快速上手 ->
