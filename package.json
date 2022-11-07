@@ -1,6 +1,6 @@
 {
   "name": "missyt-utils",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "missyt-utils 常用的工具方法",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",

@@ -26,11 +26,11 @@ import { Pubsub } from 'missyt-utils';
   // console.log(Pubsub.callbacks);
   {
     "login":{
-      "token_1328": data => data => console.log('subscribe 1', data),
-      "token_1329": data => data => console.log('subscribe 2', data)
+      "token_1328": data => console.log('subscribe 1', data),
+      "token_1329": data => console.log('subscribe 2', data)
     },
     "refresh":{
-      "token_1330": data => data => console.log('refresh 1', data)
+      "token_1330": data => console.log('refresh 1', data)
     }
   }
 ```
@@ -65,7 +65,7 @@ import { Pubsub } from 'missyt-utils';
   // console.log(Pubsub.callbacks);
   {
     "login":{
-      "token_1328": data => data => console.log('subscribe 1', data)
+      "token_1328": data => console.log('subscribe 1', data)
     }
   }
 ```

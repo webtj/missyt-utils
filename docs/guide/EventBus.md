@@ -50,6 +50,6 @@ import { EventBus } from 'missyt-utils';
  * @return null
  */
   EventBus.off('refresh'); //注销refresh方法
-  EventBus.off(); //注销所有的时间
+  EventBus.off(); //注销所有的事件
 ```
 

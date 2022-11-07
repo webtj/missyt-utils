@@ -6,7 +6,7 @@
 
 ## 引入
 ```javascript
-import mUtils from 'missyt-utils';
+import * as mUtils from 'missyt-utils';
 
 import { isBrowser } from 'missyt-utils';
 
