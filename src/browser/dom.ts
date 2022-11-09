@@ -1,80 +1,12 @@
 /**
- * @function getAuthor
- * @description 获取作者信息
- * @returns {string} 返回作者信息
- * @example getAuthor() // => 'author'
- */
-declare const getAuthor: () => string;
-
-/**
- * @var isBrowser
- * @description 判断是否为浏览器环境
- * @returns {boolean} 返回判断结果
- * @example if(isBrowser){...}
- */
-declare const isBrowser: boolean;
-/**
- * @function getBrowserInfo
- * @description 获取浏览器信息
- * @returns {object} 返回浏览器信息
- * @example getBrowserInfo() // => {"type": "Chrome","version": 107,"onLine": true,"platform": "MacIntel","cookieEnabled": true,"language": "zh-CN"}
- */
-declare const getBrowserInfo: () => object;
-/**
- * @function isFullScreen
- * @description 判断是否全屏
- * @returns {boolean} 返回判断结果
- * @example isFullScreen() // => true
- * @see https://developer.mozilla.org/zh-CN/docs/Web/API/Fullscreen_API
- */
-declare const isFullScreen: () => boolean;
-/**
- * @function exitFullScreen
- * @description 退出全屏
- * @return {void} 无返回值
- * @example exitFullScreen()
- * @see https://developer.mozilla.org/zh-CN/docs/Web/API/Fullscreen_API
- */
-declare const exitFullScreen: () => void;
-/**
- * @function fullScreen
- * @description 使某个元素全屏
- * @param {HTMLElement} element 需要全屏的元素
- * @return {void} 无返回值
- * @example fullScreen(document.documentElement)
- */
-declare const fullScreen: (element: HTMLElement) => void;
-
-/**
- * @function getOS
- * @description 获取设备的操作系统
- * @returns {string} 返回操作系统
- * @example getOS() // => 'MacOS'
- */
-declare const getOS: () => string;
-/**
- * @function isWeiXin
- * @description 判断是否为微信浏览器
- * @returns {boolean} true or false
- * @example isWeiXin() // => true
- */
-declare const isWeiXin: () => boolean;
-/**
- * @function isMobile
- * @description 判断是否为移动端
- * @returns {boolean} 返回判断结果
- * @example isMobile() // => true
- */
-declare const isMobile: () => boolean;
-
-/**
  * @function $
  * @description 获取dom元素，只返回一个元素
  * @param {string} el 节点选择器
  * @returns {HTMLElement|null}
  * @example $('body') // => HTMLElement
  */
-declare const $: (el: string) => HTMLElement | null;
+const $ = (el: string): HTMLElement | null => document.querySelector(el);
+
 /**
  * @function $$
  * @description 获取dom元素，返回一个数组
@@ -82,7 +14,8 @@ declare const $: (el: string) => HTMLElement | null;
  * @returns {NodeListOf<HTMLElement>}
  * @example $$('.col') // => NodeListOf<HTMLElement>
  */
-declare const $$: (el: string) => NodeListOf<HTMLElement>;
+const $$ = (el: string): NodeListOf<HTMLElement> => document.querySelectorAll(el);
+
 /**
  * @function setStyle
  * @description 设置dom元素的样式
@@ -91,7 +24,12 @@ declare const $$: (el: string) => NodeListOf<HTMLElement>;
  * @returns {void} 无返回值
  * @example setStyle(document.body, { color: 'red' }) // => void
  */
-declare const setStyle: (el: HTMLElement, style: object) => void;
+const setStyle = (el: HTMLElement, style: object): void => {
+  for (const key in style) {
+    el.style[key] = style[key];
+  }
+};
+
 /**
  * @function getStyle
  * @description 获取dom元素的样式
@@ -100,7 +38,8 @@ declare const setStyle: (el: HTMLElement, style: object) => void;
  * @returns {string} 样式属性值
  * @example getStyle(document.body, 'color') // => 'red'
  */
-declare const getStyle: (el: HTMLElement, style: string) => string;
+const getStyle = (el: HTMLElement, style: string): string => getComputedStyle(el)[style];
+
 /**
  * @function getClass
  * @description 获取dom元素的class
@@ -108,7 +47,8 @@ declare const getStyle: (el: HTMLElement, style: string) => string;
  * @returns {string} class属性值
  * @example getClass(document.querySelector('.col')) // => 'span-12'
  */
-declare const getClass: (el: HTMLElement) => string;
+const getClass = (el: HTMLElement) => el.className;
+
 /**
  * @function hasClass
  * @description 判断dom元素是否有某个class
@@ -117,7 +57,8 @@ declare const getClass: (el: HTMLElement) => string;
  * @returns {boolean} 是否有class
  * @example hasClass(document.querySelector('.col'), 'span-12') // => true
  */
-declare const hasClass: (el: HTMLElement, className: string) => boolean;
+const hasClass = (el: HTMLElement, className: string): boolean => el.classList.contains(className);
+
 /**
  * @function removeClass
  * @description 移除dom元素的class
@@ -126,7 +67,8 @@ declare const hasClass: (el: HTMLElement, className: string) => boolean;
  * @returns {void} 无返回值
  * @example removeClass(document.querySelector('.col'), 'span-12') // => void
  */
-declare const removeClass: (el: HTMLElement, className: string) => void;
+const removeClass = (el: HTMLElement, className: string): void => el.classList.remove(className);
+
 /**
  * @function addClass
  * @description 添加dom元素的class
@@ -135,7 +77,10 @@ declare const removeClass: (el: HTMLElement, className: string) => void;
  * @returns {void} 无返回值
  * @example addClass(document.querySelector('.col'), 'span-12') // => void
  */
-declare const addClass: (el: HTMLElement, className: string) => void;
+const addClass = (el: HTMLElement, className: string): void => {
+  if (!hasClass(el, className)) el.classList.add(className);
+};
+
 /**
  * @function setAttr
  * @description 设置dom元素的属性
@@ -144,7 +89,12 @@ declare const addClass: (el: HTMLElement, className: string) => void;
  * @returns {void} 无返回值
  * @example setAttr(document.querySelector('.col'), { id: 'col' }) // => void
  */
-declare const setAttr: (el: HTMLElement, attr: object) => void;
+const setAttr = (el: HTMLElement, attr: object): void => {
+  for (const key in attr) {
+    el.setAttribute(key, attr[key]);
+  }
+};
+
 /**
  * @function removeAttr
  * @description 移除dom元素的属性
@@ -153,7 +103,8 @@ declare const setAttr: (el: HTMLElement, attr: object) => void;
  * @returns {void} 无返回值
  * @example removeAttr(document.querySelector('.col'), 'id') // => void
  */
-declare const removeAttr: (el: HTMLElement, attr: string) => void;
+const removeAttr = (el: HTMLElement, attr: string): void => el.removeAttribute(attr);
+
 /**
  * @function getAttr
  * @description 获取dom元素的属性
@@ -162,7 +113,8 @@ declare const removeAttr: (el: HTMLElement, attr: string) => void;
  * @returns {string} 属性值
  * @example getAttr(document.querySelector('.col'), 'id') // => 'col'
  */
-declare const getAttr: (el: HTMLElement, attr: string) => string | null;
+const getAttr = (el: HTMLElement, attr: string): string | null => el.getAttribute(attr);
+
 /**
  * @function getAttrList
  * @description 获取dom元素的属性列表
@@ -170,7 +122,10 @@ declare const getAttr: (el: HTMLElement, attr: string) => string | null;
  * @returns {Array<string>} 属性列表
  * @example getAttrList(document.querySelector('.col')) // => ['id', 'class']
  */
-declare const getAttrList: (el: HTMLElement) => Array<string>;
+const getAttrList = (el: HTMLElement): Array<string> => {
+  return Object.keys(el.attributes).map((key) => el.attributes[key].name);
+};
+
 /**
  * @function getAttrKV
  * @description 获取dom元素的属性键值对
@@ -179,10 +134,17 @@ declare const getAttrList: (el: HTMLElement) => Array<string>;
  * @example getAttrKV(document.querySelector('.col')) // => { id: 'col', class: 'span-12' }
  */
 interface AttrKV {
-    key: string;
-    value: string | number;
+  key: string;
+  value: string | number;
 }
-declare const getAttrKV: (el: HTMLElement) => Array<AttrKV>;
+const getAttrKV = (el: HTMLElement): Array<AttrKV> => {
+  return Object.keys(el.attributes).map((attr) => {
+    const key = el.attributes[attr].name;
+    const value = el.attributes[attr].value;
+    return { key, value };
+  });
+};
+
 /**
  * @function elShow
  * @description 显示dom元素时执行某个操作
@@ -191,7 +153,15 @@ declare const getAttrKV: (el: HTMLElement) => Array<AttrKV>;
  * @returns {void} 无返回值
  * @example elShow(document.querySelector('.col'),()=>{ ... }) // => void
  */
-declare const elShow: (el: HTMLElement, callback: () => unknown) => void;
+const elShow = (el: HTMLElement, callback: () => unknown) => {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) callback && callback();
+    });
+  });
+  observer.observe(el);
+};
+
 /**
  * @function isShow
  * @description 判断dom元素是否在可视区域
@@ -199,7 +169,12 @@ declare const elShow: (el: HTMLElement, callback: () => unknown) => void;
  * @returns {boolean} 是否在可视区域
  * @example isShow(document.querySelector('.col')) // => true
  */
-declare const isShow: (el: HTMLElement) => boolean;
+const isShow = (el: HTMLElement): boolean => {
+  const rect = el.getBoundingClientRect();
+  const clientHeight = window.innerHeight || document.documentElement.clientHeight;
+  return rect.top <= clientHeight;
+};
+
 /**
  * @function removeTag
  * @description 移除text文本中的标签
@@ -207,6 +182,23 @@ declare const isShow: (el: HTMLElement) => boolean;
  * @returns {string} 移除标签后的文本
  * @example removeTag('<p>hello world</p>') // => 'hello world'
  */
-declare const removeTag: (text: string) => string;
+const removeTag = (text: string): string => text.replace(/<[^>]+>/g, '');
 
-export { $, $$, addClass, elShow, exitFullScreen, fullScreen, getAttr, getAttrKV, getAttrList, getAuthor, getBrowserInfo, getClass, getOS, getStyle, hasClass, isBrowser, isFullScreen, isMobile, isShow, isWeiXin, removeAttr, removeClass, removeTag, setAttr, setStyle };
+export {
+  $,
+  $$,
+  setStyle,
+  getStyle,
+  getClass,
+  hasClass,
+  removeClass,
+  addClass,
+  setAttr,
+  removeAttr,
+  getAttr,
+  getAttrList,
+  getAttrKV,
+  elShow,
+  isShow,
+  removeTag,
+};

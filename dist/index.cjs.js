@@ -1,1 +1,368 @@
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0});function e(e){return Object.prototype.toString.call(e).match(/^\[object\s(.*)\]$/)[1]}var t=function(t){var r=arguments.length>1&&void 0!==arguments[1]&&arguments[1];return"Number"===e(t)&&(!r||Number.isFinite(t))};function r(e,t){var r=Object.keys(e);if(Object.getOwnPropertySymbols){var n=Object.getOwnPropertySymbols(e);t&&(n=n.filter((function(t){return Object.getOwnPropertyDescriptor(e,t).enumerable}))),r.push.apply(r,n)}return r}function n(e){for(var t=1;t<arguments.length;t++){var n=null!=arguments[t]?arguments[t]:{};t%2?r(Object(n),!0).forEach((function(t){a(e,t,n[t])})):Object.getOwnPropertyDescriptors?Object.defineProperties(e,Object.getOwnPropertyDescriptors(n)):r(Object(n)).forEach((function(t){Object.defineProperty(e,t,Object.getOwnPropertyDescriptor(n,t))}))}return e}function o(e){return o="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},o(e)}function i(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function s(e,t){for(var r=0;r<t.length;r++){var n=t[r];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,n.key,n)}}function a(e,t,r){return t in e?Object.defineProperty(e,t,{value:r,enumerable:!0,configurable:!0,writable:!0}):e[t]=r,e}var u="object"===("undefined"==typeof window?"undefined":o(window))&&"object"===("undefined"==typeof document?"undefined":o(document)),c=!!(document.fullscreenElement||document.mozFullScreenElement||document.webkitFullscreenElement||document.msFullscreenElement),l=function(e,t){return e.classList.contains(t)},f={id:1328,callbacks:{},subscribe:function(e,t){var r="token_".concat(this.id++);return this.callbacks[e]?this.callbacks[e][r]=t:this.callbacks[e]=a({},r,t),r},publish:function(e,t){this.callbacks[e]&&Object.values(this.callbacks[e]).forEach((function(e){e(t)}))},unscribe:function(e){if(e){if("string"==typeof e)if(e.startsWith("token")){var t=Object.values(this.callbacks).find((function(t){return t.hasOwnProperty(e)}));t&&delete t[e]}else delete this.callbacks[e]}else this.callbacks={}}},d=function(e,r){var n=arguments.length>2&&void 0!==arguments[2]?arguments[2]:0,o=arguments.length>3&&void 0!==arguments[3]?arguments[3]:"/",i=arguments.length>4&&void 0!==arguments[4]?arguments[4]:"";if(!u)throw new Error("setCookie is only available in browser");if(e&&document.cookie){var s="".concat(e,"=").concat(r);if(t(n)){var a=new Date;a.setTime(a.getTime()+24*n*3600*1e3),s+="; expires=".concat(a.toGMTString())}o&&(s+="; path=".concat(o)),i&&(s+="; domain=".concat(i)),document.cookie=s}},p=function(){function e(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:"local",r=arguments.length>1&&void 0!==arguments[1]?arguments[1]:"";if(i(this,e),a(this,"prefix",""),a(this,"_watcher",{}),!u)throw new Error("get is only available in browser");this.storage="local"===t?window.localStorage:window.sessionStorage,this.prefix=r}var r,n,o;return r=e,n=[{key:"get",value:function(e){var t=null,r=this.prefix+e,n=this.storage.getItem(r);try{(n=JSON.parse(n)).expires&&n.expires<(new Date).getTime()&&(this.storage.removeItem(r),t=null),t=n.value}catch(e){t=n}return t}},{key:"set",value:function(e,r){var n=arguments.length>2&&void 0!==arguments[2]?arguments[2]:0;if(e){var o=this.prefix+e;if(t(n)&&n>0){var i=new Date;i.setTime(i.getTime()+24*n*3600*1e3),this.storage.setItem(o,JSON.stringify({value:r,expires:i.getTime()}))}else this.storage.setItem(o,JSON.stringify({value:r}))}}},{key:"remove",value:function(e){var t=this.prefix+e;this.storage.removeItem(t),this._watcher[t]&&(clearInterval(this._watcher[t]),delete this._watcher[t])}},{key:"clear",value:function(){var e=this;this.storage.clear(),Object.keys(this._watcher).forEach((function(t){clearInterval(e._watcher[t])})),this._watcher={}}},{key:"watch",value:function(e,t){var r=this,n=this.prefix+e,o=this.get(n),i=o;this._watcher[n]&&clearInterval(this._watcher[n]);var s=setInterval((function(){(i=r.get(e))!==o&&(t(i,o),o=i)}),100);return this._watcher[n]=s,s}}],n&&s(r.prototype,n),o&&s(r,o),Object.defineProperty(r,"prototype",{writable:!1}),e}(),m=new p("local"),h=new p("session"),b=function(e){return e<10?"0"+e:e},g=function(e){return"string"==typeof e&&(e=new Date(e)),"number"==typeof e&&(e=new Date(e)),e instanceof Date||(e=new Date),{year:e.getFullYear(),month:e.getMonth()+1,day:e.getDate(),hour:e.getHours(),minute:e.getMinutes(),second:e.getSeconds()}},x=function(e){return new Promise((function(t,r){var n=new Image;n.setAttribute("crossOrigin","anonymous"),n.onload=function(){t({width:n.width,height:n.height})},n.onerror=function(e){r(e)},n.src=e}))};exports.$=function(e){return document.querySelector(e)},exports.$$=function(e){return document.querySelectorAll(e)},exports.EventBus={callbacks:{},on:function(e,t){return this.callbacks[e]?this.callbacks[e].push(t):this.callbacks[e]=[t],this.callbacks[e]},emit:function(e,t){this.callbacks[e]&&this.callbacks[e].length>0&&this.callbacks[e].forEach((function(e){e(t)}))},off:function(e){e?delete this.callbacks[e]:this.callbacks={}}},exports.Pubsub=f,exports.Storage=p,exports.addClass=function(e,t){l(e,t)||e.classList.add(t)},exports.base64ToBlob=function(e){for(var t=e.split(","),r=t[0].match(/:(.*?);/)[1],n=atob(t[1]),o=n.length,i=new Uint8Array(o);o--;)i[o]=n.charCodeAt(o);return new Blob([i],{type:r})},exports.base64ToFile=function(e,t){for(var r=e.split(","),n=r[0].match(/:(.*?);/)[1],o=atob(r[1]),i=o.length,s=new Uint8Array(i);i--;)s[i]=o.charCodeAt(i);return new File([s],t,{type:n})},exports.deepClone=function e(t){var r=arguments.length>1&&void 0!==arguments[1]?arguments[1]:new WeakMap;if(null===t)return null;if(t instanceof Date)return new Date(t);if(t instanceof RegExp)return new RegExp(t);if("object"!==o(t))return t;if(r.has(t))return r.get(t);var n=new t.constructor;for(var i in r.set(t,n),t)t.hasOwnProperty(i)&&(n[i]=e(t[i],r));return n},exports.diffDays=function(e,t){var r=e.getTime(),n=t.getTime(),o=Math.abs(r>=n?r-n:n-r);return Math.floor(o/864e5)},exports.downloadImage=function(e,t){var r=new Image;r.setAttribute("crossOrigin","anonymous"),r.onload=function(){var e=document.createElement("canvas");e.width=r.width,e.height=r.height,e.getContext("2d").drawImage(r,0,0,r.width,r.height);var n=e.toDataURL("image/png"),o=document.createElement("a"),i=new MouseEvent("click");o.download=(t||"photo")+".png",o.href=n,o.dispatchEvent(i)},r.src=e+"?t="+(new Date).getTime()},exports.elShow=function(e,t){new IntersectionObserver((function(e){e.forEach((function(e){e.isIntersecting&&t&&t()}))})).observe(e)},exports.exitFullScreen=function(){document.exitFullscreen?document.exitFullscreen():document.mozCancelFullScreen?document.mozCancelFullScreen():document.webkitExitFullscreen?document.webkitExitFullscreen():document.msExitFullscreen&&document.msExitFullscreen()},exports.fileToBase64=function(e){return new Promise((function(t,r){var n=new FileReader;n.onload=function(e){var r=e.target.result;t(r)},n.readAsDataURL(e)}))},exports.formatDate=function(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:"yyyy-MM-dd HH:mm:ss",r=g(e),n=r.year,o=r.month,i=r.day,s=r.hour,a=r.minute,u=r.second;return t.replace(/YYYY|yyyy/g,n).replace(/YY|yy/g,b(n).toString().substr(2,2)).replace(/MM/g,b(o)).replace(/DD|dd/g,b(i)).replace(/HH|hh/g,b(s)).replace(/mm/g,b(a)).replace(/ss/g,b(u))},exports.fullScreen=function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:document.documentElement;e.requestFullscreen?e.requestFullscreen():e.mozRequestFullScreen?e.mozRequestFullScreen():e.webkitRequestFullscreen?e.webkitRequestFullscreen():e.msRequestFullscreen&&e.msRequestFullscreen()},exports.getAttr=function(e,t){return e.getAttribute(t)},exports.getAttrKV=function(e){return Object.keys(e.attributes).map((function(t){return{key:e.attributes[t].name,value:e.attributes[t].value}}))},exports.getAttrList=function(e){return Object.keys(e.attributes).map((function(t){return e.attributes[t].name}))},exports.getAuthor=function(){return"taojian"},exports.getBrowserInfo=function(){var e=navigator,t=e.userAgent,r=e.onLine,o=e.platform,i=e.cookieEnabled,s=e.language,a=t.toLowerCase();return n(n({},0<=a.indexOf("msie")?{type:"IE",version:Number(a.match(/msie ([\d]+)/)[1])}:a.match(/trident\/.+?rv:(([\d.]+))/)?{type:"IE",version:11}:0<=a.indexOf("edge")?{type:"Edge",version:Number(a.match(/edge\/([\d]+)/)[1])}:0<=a.indexOf("firefox")?{type:"Firefox",version:Number(a.match(/firefox\/([\d]+)/)[1])}:0<=a.indexOf("chrome")?{type:"Chrome",version:Number(a.match(/chrome\/([\d]+)/)[1])}:0<=a.indexOf("opera")?{type:"Opera",version:Number(a.match(/opera.([\d]+)/)[1])}:0<=a.indexOf("safari")?{type:"Safari",version:Number(a.match(/version\/([\d]+)/)[1])}:{type:a,version:-1}),{},{onLine:r,platform:o,cookieEnabled:i,language:s})},exports.getClass=function(e){return e.className},exports.getCookie=function(e){if(!u)throw new Error("getCookie is only available in browser");if(!e||!document.cookie)return null;var t=new RegExp("(^| )".concat(e,"=([^;]*)(;|$)")),r=document.cookie.match(t);return r?r[2]:null},exports.getImageSizeByFile=function(e){return new Promise((function(t,r){var n=new FileReader;n.onload=function(e){var n=e.target.result;x(n).then((function(e){t(e)})).catch((function(e){r(e)}))},n.readAsDataURL(e)}))},exports.getImageSizeByUrl=x,exports.getOS=function(){var e=navigator.userAgent,t=/(?:Windows Phone)/.test(e),r=/(?:SymbianOS)/.test(e),n=/(?:Android)/.test(e),o=/(?:Firefox)/.test(e),i=/(?:Chrome|CriOS)/.test(e),s=/(?:iPad|PlayBook)/.test(e)||n&&!/(?:Mobile)/.test(e)||o&&/(?:Tablet)/.test(e),a=/(?:iPhone)/.test(e)&&!s;return t?"Windows Phone":r?"Symbian":s?"Tablet":a?"Ios":n?"Android":o?"FireFox":i?"Chrome":!a&&!n&&!r?"Pc":"Unkonwn"},exports.getRandomColor=function(){return"#".concat(Math.floor(16777215*Math.random()).toString(16).padEnd(6,"0"))},exports.getRandomInt=function(e,t){var r=Math.ceil(e),n=Math.floor(t);return Math.floor(Math.random()*(n-r+1))+r},exports.getRandomString=function e(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:16,r=Math.random().toString(36).substr(2);return r.length>=t?r.substr(0,t):r+=e(t-r.length)},exports.getStyle=function(e,t){return e.currentStyle?e.currentStyle[t]:getComputedStyle(e)[t]},exports.hasClass=l,exports.isArray=function(t){return"Array"===e(t)},exports.isBankCard=function(e){return/^[1-9]\d{9,29}$/.test(e)},exports.isBoolean=function(t){return"Boolean"===e(t)},exports.isBrowser=u,exports.isCarNumber=function(e){return/^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领][A-HJ-NP-Z][A-HJ-NP-Z0-9]{4,5}[A-HJ-NP-Z0-9挂学警港澳]$/.test(e)},exports.isChinese=function(e){return/^(?:[\u3400-\u4DB5\u4E00-\u9FEA\uFA0E\uFA0F\uFA11\uFA13\uFA14\uFA1F\uFA21\uFA23\uFA24\uFA27-\uFA29]|[\uD840-\uD868\uD86A-\uD86C\uD86F-\uD872\uD874-\uD879][\uDC00-\uDFFF]|\uD869[\uDC00-\uDED6\uDF00-\uDFFF]|\uD86D[\uDC00-\uDF34\uDF40-\uDFFF]|\uD86E[\uDC00-\uDC1D\uDC20-\uDFFF]|\uD873[\uDC00-\uDEA1\uDEB0-\uDFFF]|\uD87A[\uDC00-\uDFE0])+$/.test(e)},exports.isChineseProvince=function(e){return/^浙江|上海|北京|天津|重庆|黑龙江|吉林|辽宁|内蒙古|河北|新疆|甘肃|青海|陕西|宁夏|河南|山东|山西|安徽|湖北|湖南|江苏|四川|贵州|云南|广西|西藏|江西|广东|福建|台湾|海南|香港|澳门$/.test(e)},exports.isDate=function(t){return"Date"===e(t)},exports.isDateString=function(e){return/^(([0-9]{3}[1-9]|[0-9]{2}[1-9][0-9]{1}|[0-9]{1}[1-9][0-9]{2}|[1-9][0-9]{3})-(((0[13578]|1[02])-(0[1-9]|[12][0-9]|3[01]))|((0[469]|11)-(0[1-9]|[12][0-9]|30))|(02-(0[1-9]|[1][0-9]|2[0-8]))))|((([0-9]{2})(0[48]|[2468][048]|[13579][26])|((0[48]|[2468][048]|[3579][26])00))-02-29)$/.test(e)},exports.isDecimal=function(e){return/^\d+\.\d+$/.test(e)},exports.isEmail=function(e){return/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(e)},exports.isError=function(t){return"Error"===e(t)},exports.isFloat=function(e){return/^(-?[1-9]\d*\.\d+|-?0\.\d*[1-9])$/.test(e)},exports.isFullScreen=c,exports.isFunction=function(t){return"Function"===e(t)},exports.isHtml=function(e){return/<(\w+)[^>]*>(.*?<\/\1>)?/.test(e)},exports.isIMEI=function(e){return/^\d{15,17}$/.test(e)},exports.isIdCard=function(e){return/^\d{6}((((((19|20)\d{2})(0[13-9]|1[012])(0[1-9]|[12]\d|30))|(((19|20)\d{2})(0[13578]|1[02])31)|((19|20)\d{2})02(0[1-9]|1\d|2[0-8])|((((19|20)([13579][26]|[2468][048]|0[48]))|(2000))0229))\d{3})|((((\d{2})(0[13-9]|1[012])(0[1-9]|[12]\d|30))|((\d{2})(0[13578]|1[02])31)|((\d{2})02(0[1-9]|1\d|2[0-8]))|(([13579][26]|[2468][048]|0[048])0229))\d{2}))(\d|X|x)$/.test(e)},exports.isImageUrl=function(e){return/^https?:\/\/(.+\/)+.+(\.(gif|jpg|jpeg|png|svg|webp|psd|bmp|tif))$/i.test(e)},exports.isInteger=function(e){return/^(?:0|(?:-?[1-9]\d*))$/.test(e)},exports.isIpv4=function(e){return/^((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.){3}(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])(?::(?:[0-9]|[1-9][0-9]{1,3}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-5]))?$/.test(e)},exports.isIpv6=function(e){return/(^(?:(?:(?:[0-9A-Fa-f]{1,4}:){7}[0-9A-Fa-f]{1,4})|(([0-9A-Fa-f]{1,4}:){6}:[0-9A-Fa-f]{1,4})|(([0-9A-Fa-f]{1,4}:){5}:([0-9A-Fa-f]{1,4}:)?[0-9A-Fa-f]{1,4})|(([0-9A-Fa-f]{1,4}:){4}:([0-9A-Fa-f]{1,4}:){0,2}[0-9A-Fa-f]{1,4})|(([0-9A-Fa-f]{1,4}:){3}:([0-9A-Fa-f]{1,4}:){0,3}[0-9A-Fa-f]{1,4})|(([0-9A-Fa-f]{1,4}:){2}:([0-9A-Fa-f]{1,4}:){0,4}[0-9A-Fa-f]{1,4})|(([0-9A-Fa-f]{1,4}:){6}((\b((25[0-5])|(1\d{2})|(2[0-4]\d)|(\d{1,2}))\b)\.){3}(\b((25[0-5])|(1\d{2})|(2[0-4]\d)|(\d{1,2}))\b))|(([0-9A-Fa-f]{1,4}:){0,5}:((\b((25[0-5])|(1\d{2})|(2[0-4]\d)|(\d{1,2}))\b)\.){3}(\b((25[0-5])|(1\d{2})|(2[0-4]\d)|(\d{1,2}))\b))|(::([0-9A-Fa-f]{1,4}:){0,5}((\b((25[0-5])|(1\d{2})|(2[0-4]\d)|(\d{1,2}))\b)\.){3}(\b((25[0-5])|(1\d{2})|(2[0-4]\d)|(\d{1,2}))\b))|([0-9A-Fa-f]{1,4}::([0-9A-Fa-f]{1,4}:){0,5}[0-9A-Fa-f]{1,4})|(::([0-9A-Fa-f]{1,4}:){0,6}[0-9A-Fa-f]{1,4})|(([0-9A-Fa-f]{1,4}:){1,7}:))$)|(^\[(?:(?:(?:[0-9A-Fa-f]{1,4}:){7}[0-9A-Fa-f]{1,4})|(([0-9A-Fa-f]{1,4}:){6}:[0-9A-Fa-f]{1,4})|(([0-9A-Fa-f]{1,4}:){5}:([0-9A-Fa-f]{1,4}:)?[0-9A-Fa-f]{1,4})|(([0-9A-Fa-f]{1,4}:){4}:([0-9A-Fa-f]{1,4}:){0,2}[0-9A-Fa-f]{1,4})|(([0-9A-Fa-f]{1,4}:){3}:([0-9A-Fa-f]{1,4}:){0,3}[0-9A-Fa-f]{1,4})|(([0-9A-Fa-f]{1,4}:){2}:([0-9A-Fa-f]{1,4}:){0,4}[0-9A-Fa-f]{1,4})|(([0-9A-Fa-f]{1,4}:){6}((\b((25[0-5])|(1\d{2})|(2[0-4]\d)|(\d{1,2}))\b)\.){3}(\b((25[0-5])|(1\d{2})|(2[0-4]\d)|(\d{1,2}))\b))|(([0-9A-Fa-f]{1,4}:){0,5}:((\b((25[0-5])|(1\d{2})|(2[0-4]\d)|(\d{1,2}))\b)\.){3}(\b((25[0-5])|(1\d{2})|(2[0-4]\d)|(\d{1,2}))\b))|(::([0-9A-Fa-f]{1,4}:){0,5}((\b((25[0-5])|(1\d{2})|(2[0-4]\d)|(\d{1,2}))\b)\.){3}(\b((25[0-5])|(1\d{2})|(2[0-4]\d)|(\d{1,2}))\b))|([0-9A-Fa-f]{1,4}::([0-9A-Fa-f]{1,4}:){0,5}[0-9A-Fa-f]{1,4})|(::([0-9A-Fa-f]{1,4}:){0,6}[0-9A-Fa-f]{1,4})|(([0-9A-Fa-f]{1,4}:){1,7}:))\](?::(?:[0-9]|[1-9][0-9]{1,3}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-5]))?$)/i.test(e)},exports.isMacAddress=function(e){return/^((([a-f0-9]{2}:){5})|(([a-f0-9]{2}-){5}))[a-f0-9]{2}$/i.test(e)},exports.isMap=function(t){return"Map"===e(t)},exports.isMobile=function(){return/(iPhone|iPod|Android|ios|iOS|iPad|Backerry|WebOS|Symbian|Windows Phone|Phone)/i.test(navigator.userAgent)},exports.isMobileNumer=function(e){return/^(?:(?:\+|00)86)?1(?:(?:3[\d])|(?:4[5-79])|(?:5[0-35-9])|(?:6[5-7])|(?:7[0-8])|(?:8[\d])|(?:9[189]))\d{8}$/.test(e)},exports.isNegativeInteger=function(e){return/^\-[1-9]\d*$/.test(e)},exports.isNewEnergyCar=function(e){return/^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领][A-HJ-NP-Z](?:((\d{5}[A-HJK])|([A-HJK][A-HJ-NP-Z0-9][0-9]{4}))|[A-HJ-NP-Z0-9]{4}[A-HJ-NP-Z0-9挂学警港澳])$/.test(e)},exports.isNull=function(t){return"Null"===e(t)},exports.isNumber=t,exports.isNumberOrLetter=function(e){return/^[a-zA-Z0-9]+$/.test(e)},exports.isObject=function(t){return"Object"===e(t)},exports.isOnlyLetter=function(e){return/^[a-zA-Z]+$/.test(e)},exports.isOnlyNumber=function(e){return/^\d+$/.test(e)},exports.isPetrolCar=function(e){return/^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领][A-HJ-NP-Z][A-HJ-NP-Z0-9]{4}[A-HJ-NP-Z0-9挂学警港澳]$/.test(e)},exports.isPositiveInteger=function(e){return/^\+?[1-9]\d*$/.test(e)},exports.isPromise=function(t){return"Promise"===e(t)},exports.isRailwayNumber=function(e){return/^[GCDZTSPKXLY1-9]\d{1,4}$/.test(e)},exports.isRegExp=function(t){return"RegExp"===e(t)},exports.isSet=function(t){return"Set"===e(t)},exports.isShow=function(e){var t=e.getBoundingClientRect(),r=window.innerHeight||document.documentElement.clientHeight;return t.top<=r},exports.isString=function(t){return"String"===e(t)},exports.isSubnetMask=function(e){return/^((255\.){3}(255|254|252|248|240|224|192|128|0))$/.test(e)},exports.isSymbol=function(t){return"Symbol"===e(t)},exports.isTelPhone=function(e){return/^(?:(?:\d{3}-)?\d{8}|^(?:\d{4}-)?\d{7,8})(?:-\d+)?$/.test(e)},exports.isURL=function(e){return/^(((ht|f)tps?):\/\/)?([^!@#$%^&*?.\s-]([^!@#$%^&*?.\s]{0,63}[^!@#$%^&*?.\s])?\.)+[a-z]{2,6}\/?/.test(e)},exports.isUndefined=function(t){return"Undefined"===e(t)},exports.isVersion=function(e){return/^\d+(?:\.\d+){2}$/.test(e)},exports.isVideoUrl=function(e){return/^https?:\/\/(.+\/)+.+(\.(swf|avi|flv|mpg|rm|mov|wav|asf|3gp|mkv|rmvb|mp4))$/i.test(e)},exports.isWeakMap=function(t){return"WeakMap"===e(t)},exports.isWeakSet=function(t){return"WeakSet"===e(t)},exports.isWeiXin=function(){return"micromessenger"==navigator.userAgent.toLowerCase().match(/MicroMessenger/i)},exports.isZipCode=function(e){return/^(0[1-7]|1[0-356]|2[0-7]|3[0-6]|4[0-7]|5[1-7]|6[1-7]|7[0-5]|8[013-6])\d{4}$/.test(e)},exports.local=m,exports.parseDate=g,exports.removeAttr=function(e,t){return e.removeAttribute(t)},exports.removeClass=function(e,t){return e.classList.remove(t)},exports.removeCookie=function(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:"/",r=arguments.length>2&&void 0!==arguments[2]?arguments[2]:"";if(!u)throw new Error("removeCookie is only available in browser");e&&document.cookie&&d(e,"",-1,t,r)},exports.removeTag=function(e){return e.replace(/<[^>]+>/g,"")},exports.session=h,exports.setAttr=function(e,t){for(var r in t)e.setAttribute(r,t[r])},exports.setCookie=d,exports.setStyle=function(e,t){for(var r in t)e.style[r]=t[r]};
+'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+/**
+ * @function getAuthor
+ * @description 获取作者信息
+ * @returns {string} 返回作者信息
+ * @example getAuthor() // => 'author'
+ */
+const getAuthor = () => 'taojian';
+
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+//@ts-nocheck
+/**
+ * @var isBrowser
+ * @description 判断是否为浏览器环境
+ * @returns {boolean} 返回判断结果
+ * @example if(isBrowser){...}
+ */
+const isBrowser = typeof window === 'object' && typeof document === 'object';
+/**
+ * @function getBrowserInfo
+ * @description 获取浏览器信息
+ * @returns {object} 返回浏览器信息
+ * @example getBrowserInfo() // => {"type": "Chrome","version": 107,"onLine": true,"platform": "MacIntel","cookieEnabled": true,"language": "zh-CN"}
+ */
+const getBrowserInfo = () => {
+    var _a, _b, _c, _d, _e, _f;
+    const { userAgent, onLine, platform, cookieEnabled, language } = navigator;
+    const t = userAgent.toLowerCase();
+    const result = 0 <= t.indexOf('msie')
+        ? {
+            //ie < 11
+            type: 'IE',
+            version: Number((_a = t.match(/msie ([\d]+)/)) === null || _a === void 0 ? void 0 : _a[1]),
+        }
+        : !!t.match(/trident\/.+?rv:(([\d.]+))/)
+            ? {
+                // ie 11
+                type: 'IE',
+                version: 11,
+            }
+            : 0 <= t.indexOf('edge')
+                ? {
+                    type: 'Edge',
+                    version: Number((_b = t.match(/edge\/([\d]+)/)) === null || _b === void 0 ? void 0 : _b[1]),
+                }
+                : 0 <= t.indexOf('firefox')
+                    ? {
+                        type: 'Firefox',
+                        version: Number((_c = t.match(/firefox\/([\d]+)/)) === null || _c === void 0 ? void 0 : _c[1]),
+                    }
+                    : 0 <= t.indexOf('chrome')
+                        ? {
+                            type: 'Chrome',
+                            version: Number((_d = t.match(/chrome\/([\d]+)/)) === null || _d === void 0 ? void 0 : _d[1]),
+                        }
+                        : 0 <= t.indexOf('opera')
+                            ? {
+                                type: 'Opera',
+                                version: Number((_e = t.match(/opera.([\d]+)/)) === null || _e === void 0 ? void 0 : _e[1]),
+                            }
+                            : 0 <= t.indexOf('safari')
+                                ? {
+                                    type: 'Safari',
+                                    version: Number((_f = t.match(/version\/([\d]+)/)) === null || _f === void 0 ? void 0 : _f[1]),
+                                }
+                                : {
+                                    type: t,
+                                    version: -1,
+                                };
+    return Object.assign(Object.assign({}, result), { onLine,
+        platform,
+        cookieEnabled,
+        language });
+};
+/**
+ * @function isFullScreen
+ * @description 判断是否全屏
+ * @returns {boolean} 返回判断结果
+ * @example isFullScreen() // => true
+ * @see https://developer.mozilla.org/zh-CN/docs/Web/API/Fullscreen_API
+ */
+const isFullScreen = () => {
+    return (document.fullscreenElement ||
+        document.mozFullScreenElement ||
+        document.webkitFullscreenElement ||
+        document.msFullscreenElement);
+};
+/**
+ * @function exitFullScreen
+ * @description 退出全屏
+ * @return {void} 无返回值
+ * @example exitFullScreen()
+ * @see https://developer.mozilla.org/zh-CN/docs/Web/API/Fullscreen_API
+ */
+const exitFullScreen = () => {
+    if (document.exitFullscreen) {
+        document.exitFullscreen();
+    }
+    else if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+    }
+    else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+    }
+    else if (document.msExitFullscreen) {
+        document.msExitFullscreen();
+    }
+};
+/**
+ * @function fullScreen
+ * @description 使某个元素全屏
+ * @param {HTMLElement} element 需要全屏的元素
+ * @return {void} 无返回值
+ * @example fullScreen(document.documentElement)
+ */
+const fullScreen = (element) => {
+    if (element.requestFullscreen) {
+        element.requestFullscreen();
+    }
+    else if (element.mozRequestFullScreen) {
+        element.mozRequestFullScreen();
+    }
+    else if (element.webkitRequestFullscreen) {
+        element.webkitRequestFullscreen();
+    }
+    else if (element.msRequestFullscreen) {
+        element.msRequestFullscreen();
+    }
+};
+
+/**
+ * @function getOS
+ * @description 获取设备的操作系统
+ * @returns {string} 返回操作系统
+ * @example getOS() // => 'MacOS'
+ */
+const getOS = () => {
+    const userAgent = navigator.userAgent, isWindowsPhone = /(?:Windows Phone)/.test(userAgent), isSymbian = /(?:SymbianOS)/.test(userAgent), isAndroid = /(?:Android)/.test(userAgent), isFireFox = /(?:Firefox)/.test(userAgent), isChrome = /(?:Chrome|CriOS)/.test(userAgent), isTablet = /(?:iPad|PlayBook)/.test(userAgent) ||
+        (isAndroid && !/(?:Mobile)/.test(userAgent)) ||
+        (isFireFox && /(?:Tablet)/.test(userAgent)), isPhone = /(?:iPhone)/.test(userAgent) && !isTablet, isPc = !isPhone && !isAndroid && !isSymbian;
+    if (isWindowsPhone)
+        return 'Windows Phone';
+    if (isSymbian)
+        return 'Symbian';
+    if (isTablet)
+        return 'Tablet';
+    if (isPhone)
+        return 'Ios';
+    if (isAndroid)
+        return 'Android';
+    if (isFireFox)
+        return 'FireFox';
+    if (isChrome)
+        return 'Chrome';
+    if (isPc)
+        return 'Pc';
+    return 'Unkonwn';
+};
+/**
+ * @function isWeiXin
+ * @description 判断是否为微信浏览器
+ * @returns {boolean} true or false
+ * @example isWeiXin() // => true
+ */
+const isWeiXin = () => {
+    const ua = navigator.userAgent.toLowerCase();
+    return /Micromessenger/i.test(ua);
+};
+/**
+ * @function isMobile
+ * @description 判断是否为移动端
+ * @returns {boolean} 返回判断结果
+ * @example isMobile() // => true
+ */
+const isMobile = () => {
+    return /(iPhone|iPod|Android|ios|iOS|iPad|Backerry|WebOS|Symbian|Windows Phone|Phone)/i.test(navigator.userAgent);
+};
+
+/**
+ * @function $
+ * @description 获取dom元素，只返回一个元素
+ * @param {string} el 节点选择器
+ * @returns {HTMLElement|null}
+ * @example $('body') // => HTMLElement
+ */
+const $ = (el) => document.querySelector(el);
+/**
+ * @function $$
+ * @description 获取dom元素，返回一个数组
+ * @param {string} el 节点选择器
+ * @returns {NodeListOf<HTMLElement>}
+ * @example $$('.col') // => NodeListOf<HTMLElement>
+ */
+const $$ = (el) => document.querySelectorAll(el);
+/**
+ * @function setStyle
+ * @description 设置dom元素的样式
+ * @param {HTMLElement} el dom元素
+ * @param {object} style 样式对象
+ * @returns {void} 无返回值
+ * @example setStyle(document.body, { color: 'red' }) // => void
+ */
+const setStyle = (el, style) => {
+    for (const key in style) {
+        el.style[key] = style[key];
+    }
+};
+/**
+ * @function getStyle
+ * @description 获取dom元素的样式
+ * @param {HTMLElement} el dom元素
+ * @param {string} style 样式名称
+ * @returns {string} 样式属性值
+ * @example getStyle(document.body, 'color') // => 'red'
+ */
+const getStyle = (el, style) => getComputedStyle(el)[style];
+/**
+ * @function getClass
+ * @description 获取dom元素的class
+ * @param {HTMLElement} el dom元素
+ * @returns {string} class属性值
+ * @example getClass(document.querySelector('.col')) // => 'span-12'
+ */
+const getClass = (el) => el.className;
+/**
+ * @function hasClass
+ * @description 判断dom元素是否有某个class
+ * @param {HTMLElement} el dom元素
+ * @param {string} className class名称
+ * @returns {boolean} 是否有class
+ * @example hasClass(document.querySelector('.col'), 'span-12') // => true
+ */
+const hasClass = (el, className) => el.classList.contains(className);
+/**
+ * @function removeClass
+ * @description 移除dom元素的class
+ * @param {HTMLElement} el dom元素
+ * @param {string} className class名称
+ * @returns {void} 无返回值
+ * @example removeClass(document.querySelector('.col'), 'span-12') // => void
+ */
+const removeClass = (el, className) => el.classList.remove(className);
+/**
+ * @function addClass
+ * @description 添加dom元素的class
+ * @param {HTMLElement} el dom元素
+ * @param {string} className class名称
+ * @returns {void} 无返回值
+ * @example addClass(document.querySelector('.col'), 'span-12') // => void
+ */
+const addClass = (el, className) => {
+    if (!hasClass(el, className))
+        el.classList.add(className);
+};
+/**
+ * @function setAttr
+ * @description 设置dom元素的属性
+ * @param {HTMLElement} el dom元素
+ * @param {object} attr 属性对象
+ * @returns {void} 无返回值
+ * @example setAttr(document.querySelector('.col'), { id: 'col' }) // => void
+ */
+const setAttr = (el, attr) => {
+    for (const key in attr) {
+        el.setAttribute(key, attr[key]);
+    }
+};
+/**
+ * @function removeAttr
+ * @description 移除dom元素的属性
+ * @param {HTMLElement} el dom元素
+ * @param {string} attr 属性名称
+ * @returns {void} 无返回值
+ * @example removeAttr(document.querySelector('.col'), 'id') // => void
+ */
+const removeAttr = (el, attr) => el.removeAttribute(attr);
+/**
+ * @function getAttr
+ * @description 获取dom元素的属性
+ * @param {HTMLElement} el dom元素
+ * @param {string} attr 属性名称
+ * @returns {string} 属性值
+ * @example getAttr(document.querySelector('.col'), 'id') // => 'col'
+ */
+const getAttr = (el, attr) => el.getAttribute(attr);
+/**
+ * @function getAttrList
+ * @description 获取dom元素的属性列表
+ * @param {HTMLElement} el dom元素
+ * @returns {Array<string>} 属性列表
+ * @example getAttrList(document.querySelector('.col')) // => ['id', 'class']
+ */
+const getAttrList = (el) => {
+    return Object.keys(el.attributes).map((key) => el.attributes[key].name);
+};
+const getAttrKV = (el) => {
+    return Object.keys(el.attributes).map((attr) => {
+        const key = el.attributes[attr].name;
+        const value = el.attributes[attr].value;
+        return { key, value };
+    });
+};
+/**
+ * @function elShow
+ * @description 显示dom元素时执行某个操作
+ * @param {HTMLElement} el dom元素
+ * @param {Function} callback 回调函数
+ * @returns {void} 无返回值
+ * @example elShow(document.querySelector('.col'),()=>{ ... }) // => void
+ */
+const elShow = (el, callback) => {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting)
+                callback && callback();
+        });
+    });
+    observer.observe(el);
+};
+/**
+ * @function isShow
+ * @description 判断dom元素是否在可视区域
+ * @param {HTMLElement} el dom元素
+ * @returns {boolean} 是否在可视区域
+ * @example isShow(document.querySelector('.col')) // => true
+ */
+const isShow = (el) => {
+    const rect = el.getBoundingClientRect();
+    const clientHeight = window.innerHeight || document.documentElement.clientHeight;
+    return rect.top <= clientHeight;
+};
+/**
+ * @function removeTag
+ * @description 移除text文本中的标签
+ * @param {string} text 文本
+ * @returns {string} 移除标签后的文本
+ * @example removeTag('<p>hello world</p>') // => 'hello world'
+ */
+const removeTag = (text) => text.replace(/<[^>]+>/g, '');
+
+exports.$ = $;
+exports.$$ = $$;
+exports.addClass = addClass;
+exports.elShow = elShow;
+exports.exitFullScreen = exitFullScreen;
+exports.fullScreen = fullScreen;
+exports.getAttr = getAttr;
+exports.getAttrKV = getAttrKV;
+exports.getAttrList = getAttrList;
+exports.getAuthor = getAuthor;
+exports.getBrowserInfo = getBrowserInfo;
+exports.getClass = getClass;
+exports.getOS = getOS;
+exports.getStyle = getStyle;
+exports.hasClass = hasClass;
+exports.isBrowser = isBrowser;
+exports.isFullScreen = isFullScreen;
+exports.isMobile = isMobile;
+exports.isShow = isShow;
+exports.isWeiXin = isWeiXin;
+exports.removeAttr = removeAttr;
+exports.removeClass = removeClass;
+exports.removeTag = removeTag;
+exports.setAttr = setAttr;
+exports.setStyle = setStyle;
