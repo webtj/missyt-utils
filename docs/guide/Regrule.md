@@ -250,11 +250,11 @@
  */
 ```
 
-## isZipCode
+## isPostalCode
 > 是否为邮政编码
 ```javascript
 /**
- * @funcs isZipCode
+ * @funcs isPostalCode
  * @param {any} value 待检验的值
  * @return {Boolean} true or false
  */

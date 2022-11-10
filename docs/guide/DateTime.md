@@ -38,3 +38,17 @@
  */
   diffDays(new Date('2022-10-25 13:34:10'),new Date('2022-10-26 13:34:10'))
 ```
+
+## formatPassTime
+> 格式化过去的时间
+```javascript
+/**
+ * @function formatPassTime
+ * @description 格式化过去的时间
+ * @param {Datetype} startTime 需要格式化的时间
+ * @returns {string} 返回格式化后的时间字符串
+ */
+formatPassTime('2020-01-01 12:12:12') // 1个月前
+formatPassTime(new Date()) // 刚刚
+formatPassTime(1577836800000) // 1小时前
+```

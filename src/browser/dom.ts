@@ -153,7 +153,7 @@ const getAttrKV = (el: HTMLElement): Array<AttrKV> => {
  * @returns {void} 无返回值
  * @example elShow(document.querySelector('.col'),()=>{ ... }) // => void
  */
-const elShow = (el: HTMLElement, callback: () => unknown) => {
+const elShow = (el: HTMLElement, callback: () => unknown): void => {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) callback && callback();
