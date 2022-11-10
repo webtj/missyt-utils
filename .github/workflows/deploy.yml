@@ -28,7 +28,5 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3 # 使用部署到 GitHub pages 的 action
         with:
           publish_dir: ./docs/.vitepress/dist/ # 部署打包后的 dist 目录
-          github_token: ${{ secrets.DESIGN_SECRET }} # secret 名
-          user_name: ${{ secrets.MY_USER_NAME }}
-          user_email: ${{ secrets.MY_USER_EMAIL }}
+          github_token: ${{ secrets.GITHUB_TOKEN }} # secret 名
           commit_message: 自动部署流水线：https://github.com/webtj/missyt-utils # 部署时的 git 提交信息，自由填写
