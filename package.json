@@ -14,7 +14,8 @@
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "rollup -c",
+    "dev": "cross-env NODE_ENV=dev rollup -c",
+    "build":"cross-env NODE_ENV=production rollup -c",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:serve": "vitepress serve docs"
@@ -35,6 +36,7 @@
     "@rollup/plugin-node-resolve": "^15.0.1",
     "@typescript-eslint/eslint-plugin": "^5.42.1",
     "@typescript-eslint/parser": "^5.42.1",
+    "cross-env": "^7.0.3",
     "eslint": "^8.27.0",
     "eslint-plugin-prettier": "^4.2.1",
     "prettier": "^2.7.1",
@@ -44,5 +46,8 @@
     "rollup-plugin-typescript2": "^0.34.1",
     "typescript": "^4.8.4",
     "vitepress": "^1.0.0-alpha.26"
+  },
+  "dependencies": {
+    "@types/node": "^18.11.9"
   }
 }
