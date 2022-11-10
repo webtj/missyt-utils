@@ -18,9 +18,9 @@ hero:
 
 features:
   - title: 易用
-    details: 基于Javascript编写，Rollup打包：cjs/umd/es module，开箱即用
+    details: 基于Typescript编写，Rollup打包：cjs/umd/es module，开箱即用
   - title: 简单
     details: 代码简单，不求大而全，只为实用。不重复造轮子
   - title: 后续
-    details: Typescript改造、vscode代码提示优化、补充更多的代码片段...
+    details: 补充更多的代码片段...
 ---
