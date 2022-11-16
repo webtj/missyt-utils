@@ -4,23 +4,23 @@
 > 获取操作系统类型
 ```javascript
 /**
- * @funcs getOS
- * @param null
- * @return {String} 
+ * @function getOS
+ * @description 获取设备的操作系统
+ * @returns {string} 返回操作系统
+ * @example getOS() // => 'MacOS'
  */
-  const os = getOS();
-  //return Windows Phone|Symbian|Tablet|Ios|Android|FireFox|Chrome|Pc|Unkonwn
+//return Windows Phone|Symbian|Tablet|Ios|Android|FireFox|Chrome|Pc|Unkonwn
 ```
 
 ## isWeiXin
 > 是否为微信设备
 ```javascript
 /**
- * @funcs isWeiXin
- * @param null
- * @return {Boolean} true/false 
+ * @function isWeiXin
+ * @description 判断是否为微信浏览器
+ * @returns {boolean} true or false
+ * @example isWeiXin() // => true
  */
-  const iswx = isWeiXin();
 ```
 
 
@@ -28,9 +28,9 @@
 > 是否为移动设备
 ```javascript
 /**
- * @funcs isMobile
- * @param null
- * @return {Boolean} true/false 
+ * @function isMobile
+ * @description 判断是否为移动端
+ * @returns {boolean} 返回判断结果
+ * @example isMobile() // => true
  */
-  const ismobile = isMobile();
 ```

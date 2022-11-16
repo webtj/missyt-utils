@@ -5,12 +5,10 @@
 ```javascript
 /**
  * @var isBrowser
- * @params null
- * @return {Boolean} true/false
+ * @description 判断是否为浏览器环境
+ * @returns {boolean} 返回判断结果
+ * @example if(isBrowser){...}
  */
-  if(isBrowser) {
-    console.log('哎呀，是浏览器啊！！');
-  }
 ```
 
 
@@ -19,11 +17,11 @@
 ```javascript
 /**
  * @function getBrowserInfo
- * @param null
- * @return {Object} 
+ * @description 获取浏览器信息
+ * @returns {object} 返回浏览器信息
+ * @example getBrowserInfo()
  */
-  const browserInfo = getBrowserInfo();
-  //return {"type": "Chrome","version": 107,"onLine": true,"platform": "MacIntel","cookieEnabled": true,"language": "zh-CN"}
+// {"type": "Chrome","version": 107,"onLine": true,"platform": "MacIntel","cookieEnabled": true,"language": "zh-CN"}
 ```
 
 
@@ -37,9 +35,6 @@
  * @example isFullScreen() // => true
  * @see https://developer.mozilla.org/zh-CN/docs/Web/API/Fullscreen_API
  */
-  if(isFullScreen()) {
-    console.log('当前为全屏模式，嗨起来！');
-  }
 ```
 
 ## fullScreen
@@ -52,8 +47,6 @@
  * @return {void} 无返回值
  * @example fullScreen(document.documentElement)
  */
-  //页面全屏
-  fullScreen(document.body);
 ```
 
 ## exitFullScreen
