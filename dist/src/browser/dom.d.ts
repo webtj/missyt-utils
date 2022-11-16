@@ -139,4 +139,42 @@ declare const isShow: (el: HTMLElement) => boolean;
  * @example removeTag('<p>hello world</p>') // => 'hello world'
  */
 declare const removeTag: (text: string) => string;
-export { $, $$, setStyle, getStyle, getClass, hasClass, removeClass, addClass, setAttr, removeAttr, getAttr, getAttrList, getAttrKV, elShow, isShow, removeTag, };
+/**
+ * @var domUtils
+ * @description dom相关操作
+ * @property {function} $ 获取dom元素
+ * @property {function} $$ 获取dom元素列表
+ * @property {function} setStyle 设置dom元素的样式
+ * @property {function} getStyle 获取dom元素的样式
+ * @property {function} hasClass 判断dom元素是否有某个class
+ * @property {function} removeClass 移除dom元素的class
+ * @property {function} addClass 添加dom元素的class
+ * @property {function} getClass 获取dom元素的class
+ * @property {function} setAttr 设置dom元素的属性
+ * @property {function} removeAttr 移除dom元素的属性
+ * @property {function} getAttr 获取dom元素的属性
+ * @property {function} getAttrList 获取dom元素的属性列表
+ * @property {function} getAttrKV 获取dom元素的属性键值对
+ * @property {function} elShow 显示dom元素时执行某个操作
+ * @property {function} isShow 判断dom元素是否在可视区域
+ * @property {function} removeTag 移除text文本中的标签
+ */
+declare const domUtils: {
+    $: (el: string) => HTMLElement | null;
+    $$: (el: string) => NodeListOf<HTMLElement>;
+    setStyle: (el: HTMLElement, style: object) => void;
+    getStyle: (el: HTMLElement, style: string) => string;
+    getClass: (el: HTMLElement) => string;
+    hasClass: (el: HTMLElement, className: string) => boolean;
+    removeClass: (el: HTMLElement, className: string) => void;
+    addClass: (el: HTMLElement, className: string) => void;
+    setAttr: (el: HTMLElement, attr: object) => void;
+    removeAttr: (el: HTMLElement, attr: string) => void;
+    getAttr: (el: HTMLElement, attr: string) => string | null;
+    getAttrList: (el: HTMLElement) => Array<string>;
+    getAttrKV: (el: HTMLElement) => Array<AttrKV>;
+    elShow: (el: HTMLElement, callback: () => unknown) => void;
+    isShow: (el: HTMLElement) => boolean;
+    removeTag: (text: string) => string;
+};
+export { $, $$, setStyle, getStyle, getClass, hasClass, removeClass, addClass, setAttr, removeAttr, getAttr, getAttrList, getAttrKV, elShow, isShow, removeTag, domUtils, };

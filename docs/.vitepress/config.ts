@@ -28,14 +28,14 @@ module.exports = {
       indexName: 'FasTool',
     },
   },
-}
+};
 
 function nav() {
   return [
     { text: '开始吧', link: '/guide/' },
     { text: '博客', link: 'https://www.taojian.icu/' },
     { text: '找到我', link: 'https://github.com/webtj' },
-  ]
+  ];
 }
 
 function sidebarGuide() {
@@ -54,14 +54,13 @@ function sidebarGuide() {
       items: [
         { text: 'Browser', link: '/guide/Browser' },
         { text: 'Device设备', link: '/guide/Device' },
-        { text: 'Dom操作', link: '/guide/Dom' }
-      ]
+        { text: 'Dom操作', link: '/guide/Dom' },
+        { text: 'url操作', link: '/guide/Url' },
+      ],
     },
     {
       text: '🚦 数据类型',
-      items: [
-        { text: 'DataType', link: '/guide/DataType' },
-      ],
+      items: [{ text: 'DataType', link: '/guide/DataType' }],
     },
     {
       text: '🚦 本地储存',
@@ -79,15 +78,11 @@ function sidebarGuide() {
     },
     {
       text: '🚦 时间日期',
-      items: [
-        { text: '时间日期', link: '/guide/DateTime' },
-      ],
+      items: [{ text: '时间日期', link: '/guide/DateTime' }],
     },
     {
       text: '🚦 随机数据',
-      items: [
-        { text: 'Random', link: '/guide/Random' },
-      ],
+      items: [{ text: 'Random', link: '/guide/Random' }],
     },
     {
       text: '🚦 文件处理',
@@ -98,15 +93,11 @@ function sidebarGuide() {
     },
     {
       text: '🚦 工具类',
-      items: [
-        { text: 'function', link: '/guide/Function' },
-      ],
+      items: [{ text: 'function', link: '/guide/Function' }],
     },
     {
       text: '🚦 规则校验',
-      items: [
-        { text: '常用正则', link: '/guide/Regrule' },
-      ],
-    }
-  ]
+      items: [{ text: '常用正则', link: '/guide/Regrule' }],
+    },
+  ];
 }

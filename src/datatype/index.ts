@@ -214,7 +214,49 @@ const isWeakSet = (value: unknown): boolean => getTag(value) === 'WeakSet';
  */
 const isPromise = (value: unknown): boolean => getTag(value) === 'Promise';
 
+/**
+ * @var datatypes
+ * @description 数据类型检查集合
+ * @property isNumber 判断是否为数字
+ * @property isString 判断是否为字符串
+ * @property isBoolean 判断是否为布尔值
+ * @property isNull 判断是否为null
+ * @property isUndefined 判断是否为undefined
+ * @property isSymbol 判断是否为Symbol
+ * @property isObject 判断是否为对象
+ * @property isFunction 判断是否为函数
+ * @property isArray 判断是否为数组
+ * @property isDate 判断是否为日期
+ * @property isRegExp 判断是否为正则
+ * @property isError 判断是否为错误对象
+ * @property isMap 判断是否为Map
+ * @property isWeakMap 判断是否为WeakMap
+ * @property isSet 判断是否为Set
+ * @property isWeakSet 判断是否为WeakSet
+ * @property isPromise 判断是否为Promise
+ */
+const datatypes = {
+  isNumber,
+  isString,
+  isBoolean,
+  isNull,
+  isUndefined,
+  isSymbol,
+  isObject,
+  isFunction,
+  isArray,
+  isDate,
+  isRegExp,
+  isError,
+  isMap,
+  isWeakMap,
+  isSet,
+  isWeakSet,
+  isPromise,
+};
+
 export {
+  datatypes,
   isNumber,
   isString,
   isBoolean,

@@ -19,4 +19,16 @@ declare const isWeiXin: () => boolean;
  * @example isMobile() // => true
  */
 declare const isMobile: () => boolean;
-export { getOS, isWeiXin, isMobile };
+/**
+ * @var deviceUtils
+ * @description 设备类方法
+ * @property {function} getOS - 获取设备的操作系统
+ * @property {function} isWeiXin - 判断是否为微信浏览器
+ * @property {function} isMobile - 判断是否为移动端
+ */
+declare const deviceUtils: {
+    getOS: () => string;
+    isWeiXin: () => boolean;
+    isMobile: () => boolean;
+};
+export { getOS, isWeiXin, isMobile, deviceUtils };

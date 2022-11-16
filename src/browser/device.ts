@@ -49,4 +49,17 @@ const isMobile = (): boolean => {
   return /(iPhone|iPod|Android|ios|iOS|iPad|Backerry|WebOS|Symbian|Windows Phone|Phone)/i.test(navigator.userAgent);
 };
 
-export { getOS, isWeiXin, isMobile };
+/**
+ * @var deviceUtils
+ * @description 设备类方法
+ * @property {function} getOS - 获取设备的操作系统
+ * @property {function} isWeiXin - 判断是否为微信浏览器
+ * @property {function} isMobile - 判断是否为移动端
+ */
+const deviceUtils = {
+  getOS,
+  isWeiXin,
+  isMobile,
+};
+
+export { getOS, isWeiXin, isMobile, deviceUtils };
