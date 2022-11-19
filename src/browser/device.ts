@@ -1,4 +1,14 @@
 /**
+ * @function isBrowser
+ * @description 判断是否为浏览器环境
+ * @returns {boolean} 返回判断结果
+ * @example if(isBrowser()){...}
+ */
+const isBrowser = (): boolean => {
+  return typeof window === 'object' && typeof document === 'object';
+};
+
+/**
  * @function getOS
  * @description 获取设备的操作系统
  * @returns {string} 返回操作系统
@@ -49,17 +59,4 @@ const isMobile = (): boolean => {
   return /(iPhone|iPod|Android|ios|iOS|iPad|Backerry|WebOS|Symbian|Windows Phone|Phone)/i.test(navigator.userAgent);
 };
 
-/**
- * @var deviceUtils
- * @description 设备类方法
- * @property {function} getOS - 获取设备的操作系统
- * @property {function} isWeiXin - 判断是否为微信浏览器
- * @property {function} isMobile - 判断是否为移动端
- */
-const deviceUtils = {
-  getOS,
-  isWeiXin,
-  isMobile,
-};
-
-export { getOS, isWeiXin, isMobile, deviceUtils };
+export { getOS, isWeiXin, isMobile, isBrowser };

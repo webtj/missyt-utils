@@ -1,12 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 //@ts-nocheck
-/**
- * @var isBrowser
- * @description 判断是否为浏览器环境
- * @returns {boolean} 返回判断结果
- * @example if(isBrowser){...}
- */
-const isBrowser: boolean = typeof window === 'object' && typeof document === 'object';
 
 /**
  * @function getBrowserInfo
@@ -233,34 +226,30 @@ const getSelectedText = (): string => {
 };
 
 /**
- * @var browserUtils
- * @description 浏览器相关方法
- * @property {boolean} isBrowser 判断是否在浏览器环境
- * @property {function} getBrowserInfo 获取浏览器信息
- * @property {function} isFullScreen 判断是否全屏
- * @property {function} exitFullScreen 退出全屏
- * @property {function} fullScreen 使某个元素全屏
- * @property {function} getWindowSize 获取窗口宽高
- * @property {function} getScrollPosition 获取滚动条位置
- * @property {function} copyText 复制文本
- * @property {function} readClipboard 读取粘贴板内容
+ * @function getBrowserLanguage
+ * @description 获取浏览器语言
+ * @returns {string} 返回浏览器语言
+ * @example getBrowserLanguage() // => 'zh-CN'
  */
-const browserUtils = {
-  isBrowser,
-  getBrowserInfo,
-  isFullScreen,
-  exitFullScreen,
-  fullScreen,
-  getWindowSize,
-  getScrollPosition,
-  copyText,
-  readClipboard,
-  selectText,
-  getSelectedText,
+const getBrowserLanguage = (): string => {
+  return navigator.language;
+};
+
+/**
+ * @function printPage
+ * @description 浏览器打印
+ * @example print()
+ * @see https://developer.mozilla.org/zh-CN/docs/Web/API/Window/print
+ */
+const printPage = (): void => {
+  if (document.execCommand) {
+    document.execCommand('print');
+  } else {
+    window.print();
+  }
 };
 
 export {
-  isBrowser,
   getBrowserInfo,
   fullScreen,
   isFullScreen,
@@ -269,7 +258,8 @@ export {
   getScrollPosition,
   copyText,
   readClipboard,
-  browserUtils,
   selectText,
   getSelectedText,
+  getBrowserLanguage,
+  printPage,
 };
