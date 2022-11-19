@@ -10,6 +10,7 @@ import json from '@rollup/plugin-json';
 import resolve from '@rollup/plugin-node-resolve';
 import { terser } from 'rollup-plugin-terser';
 import dts from 'rollup-plugin-dts';
+import del from 'rollup-plugin-delete';
 import pkg from './package.json';
 const isPro = process.env.NODE_ENV === 'production';
 export default [
@@ -51,6 +52,12 @@ export default [
       file: pkg.types,
       format: 'es',
     },
-    plugins: [dts()],
+    plugins: [
+      dts(),
+      del({
+        targets: ['./dist/src/'],
+        hook: 'buildEnd',
+      }),
+    ],
   },
 ];
