@@ -7,13 +7,6 @@
 declare const getAuthor: () => string;
 
 /**
- * @var isBrowser
- * @description 判断是否为浏览器环境
- * @returns {boolean} 返回判断结果
- * @example if(isBrowser){...}
- */
-declare const isBrowser: boolean;
-/**
  * @function getBrowserInfo
  * @description 获取浏览器信息
  * @returns {object} 返回浏览器信息
@@ -100,32 +93,27 @@ declare const selectText: (element: HTMLElement) => void;
  */
 declare const getSelectedText: () => string;
 /**
- * @var browserUtils
- * @description 浏览器相关方法
- * @property {boolean} isBrowser 判断是否在浏览器环境
- * @property {function} getBrowserInfo 获取浏览器信息
- * @property {function} isFullScreen 判断是否全屏
- * @property {function} exitFullScreen 退出全屏
- * @property {function} fullScreen 使某个元素全屏
- * @property {function} getWindowSize 获取窗口宽高
- * @property {function} getScrollPosition 获取滚动条位置
- * @property {function} copyText 复制文本
- * @property {function} readClipboard 读取粘贴板内容
+ * @function getBrowserLanguage
+ * @description 获取浏览器语言
+ * @returns {string} 返回浏览器语言
+ * @example getBrowserLanguage() // => 'zh-CN'
  */
-declare const browserUtils: {
-    isBrowser: boolean;
-    getBrowserInfo: () => object;
-    isFullScreen: () => boolean;
-    exitFullScreen: () => void;
-    fullScreen: (element: HTMLElement) => void;
-    getWindowSize: (includeScrollbar?: boolean) => WindowSize;
-    getScrollPosition: () => ScrollPosition;
-    copyText: (text: string, callback: () => unknown) => void;
-    readClipboard: (callback: (text: string) => unknown) => void;
-    selectText: (element: HTMLElement) => void;
-    getSelectedText: () => string;
-};
+declare const getBrowserLanguage: () => string;
+/**
+ * @function printPage
+ * @description 浏览器打印
+ * @example print()
+ * @see https://developer.mozilla.org/zh-CN/docs/Web/API/Window/print
+ */
+declare const printPage: () => void;
 
+/**
+ * @function isBrowser
+ * @description 判断是否为浏览器环境
+ * @returns {boolean} 返回判断结果
+ * @example if(isBrowser()){...}
+ */
+declare const isBrowser: () => boolean;
 /**
  * @function getOS
  * @description 获取设备的操作系统
@@ -147,18 +135,6 @@ declare const isWeiXin: () => boolean;
  * @example isMobile() // => true
  */
 declare const isMobile: () => boolean;
-/**
- * @var deviceUtils
- * @description 设备类方法
- * @property {function} getOS - 获取设备的操作系统
- * @property {function} isWeiXin - 判断是否为微信浏览器
- * @property {function} isMobile - 判断是否为移动端
- */
-declare const deviceUtils: {
-    getOS: () => string;
-    isWeiXin: () => boolean;
-    isMobile: () => boolean;
-};
 
 /**
  * @function $
@@ -301,81 +277,69 @@ declare const isShow: (el: HTMLElement) => boolean;
  * @example removeTag('<p>hello world</p>') // => 'hello world'
  */
 declare const removeTag: (text: string) => string;
-/**
- * @var domUtils
- * @description dom相关操作
- * @property {function} $ 获取dom元素
- * @property {function} $$ 获取dom元素列表
- * @property {function} setStyle 设置dom元素的样式
- * @property {function} getStyle 获取dom元素的样式
- * @property {function} hasClass 判断dom元素是否有某个class
- * @property {function} removeClass 移除dom元素的class
- * @property {function} addClass 添加dom元素的class
- * @property {function} getClass 获取dom元素的class
- * @property {function} setAttr 设置dom元素的属性
- * @property {function} removeAttr 移除dom元素的属性
- * @property {function} getAttr 获取dom元素的属性
- * @property {function} getAttrList 获取dom元素的属性列表
- * @property {function} getAttrKV 获取dom元素的属性键值对
- * @property {function} elShow 显示dom元素时执行某个操作
- * @property {function} isShow 判断dom元素是否在可视区域
- * @property {function} removeTag 移除text文本中的标签
- */
-declare const domUtils: {
-    $: (el: string) => HTMLElement | null;
-    $$: (el: string) => NodeListOf<HTMLElement>;
-    setStyle: (el: HTMLElement, style: object) => void;
-    getStyle: (el: HTMLElement, style: string) => string;
-    getClass: (el: HTMLElement) => string;
-    hasClass: (el: HTMLElement, className: string) => boolean;
-    removeClass: (el: HTMLElement, className: string) => void;
-    addClass: (el: HTMLElement, className: string) => void;
-    setAttr: (el: HTMLElement, attr: object) => void;
-    removeAttr: (el: HTMLElement, attr: string) => void;
-    getAttr: (el: HTMLElement, attr: string) => string | null;
-    getAttrList: (el: HTMLElement) => Array<string>;
-    getAttrKV: (el: HTMLElement) => Array<AttrKV>;
-    elShow: (el: HTMLElement, callback: () => unknown) => void;
-    isShow: (el: HTMLElement) => boolean;
-    removeTag: (text: string) => string;
-};
 
 /**
  * @function getQueryString
  * @description 获取url参数
- * @param name params name
- * @param url url 默认为当前页面url
- * @returns params value
+ * @param {String} name params name
+ * @param {String} url url 默认为当前页面url
+ * @returns {String} params value
  * @example getQueryString('id', 'https://www.baidu.com?id=1') // => '1'
  */
 declare const getQueryString: (name: string, url?: string) => string;
 /**
+ * @function getUrlParams
+ * @description 获取url所有参数对象
+ * @param {String} url url 默认为当前页面url
+ * @returns {Object} params object
+ * @example getUrlParams('https://www.baidu.com?id=1&name=xx') // => { id: '1', name: 'xx' }
+ */
+declare const getUrlParams: (url?: string) => object;
+/**
  * @function url2Obj
  * @description url转对象
- * @param url url 默认为当前页面url
- * @returns object
+ * @param {String} url 默认为当前页面url
+ * @returns {Object} object
  * @example url2Obj('https://www.baidu.com?id=1') // => { id: '1' }
  */
-declare const url2Obj: (url: string) => object;
+declare const url2Obj: (url?: string) => object;
 /**
  * @function obj2Url
  * @description 对象转url
- * @param obj object
- * @returns url
+ * @param {Object} obj object
+ * @returns {String} url
  * @example obj2Url({ id: '1',name: 'xx' }) // => 'id=1&name=xx'
  */
 declare const obj2Url: (obj: object) => string;
+
+declare type ElementTypes = {
+    addEventListener: (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions) => void;
+    removeEventListener: (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions) => void;
+    attachEvent: (type: string, listener: EventListenerOrEventListenerObject) => void;
+    detachEvent: (type: string, listener: EventListenerOrEventListenerObject) => void;
+};
 /**
- * @var urlUtils
- * @description url工具方法
- * @property {function} getQueryString 获取url参数
- * @property {function} url2Obj url转对象
- * @property {function} obj2Url 对象转url
+ * @var {object} event
+ * @description 事件对象
+ * @property {function} on 绑定事件
+ * @property {function} off 解绑事件
+ * @example
+ * import { event } from 'missyt-utils';
+ * event.on(document.querySelector('.col'), 'click', () => {
+ *  console.log('click');
+ * });
+ * event.off(document.querySelector('.col'), 'click', () => {
+ * console.log('click');
+ * });
  */
-declare const urlUtils: {
-    getQueryString: (name: string, url?: string) => string;
-    url2Obj: (url: string) => object;
-    obj2Url: (obj: object) => string;
+declare const event: {
+    on: <T extends ElementTypes>(el: T, type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions) => void;
+    off: <T_1 extends ElementTypes>(el: T_1, type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions) => void;
+};
+
+declare const notice: {
+    send: (title: string, options?: NotificationOptions) => Promise<Notification>;
+    confirm: (message: string, sure: () => void, cancel: () => void) => void;
 };
 
 /**
@@ -1200,4 +1164,4 @@ declare const base64ToFile: (dataurl: string, filename: string) => File;
  */
 declare const base64ToBlob: (dataurl: string) => Blob;
 
-export { $, $$, EventBus, Pubsub, Storage, addClass, base64ToBlob, base64ToFile, browserUtils, copyText, datatypes, deepClone, deviceUtils, diffDays, domUtils, downloadImage, elShow, exitFullScreen, fileToBase64, formatDate, formatPassTime, fullScreen, getAttr, getAttrKV, getAttrList, getAuthor, getBrowserInfo, getClass, getCookie, getImageSizeByFile, getImageSizeByUrl, getOS, getQueryString, getRandomColor, getRandomInt, getRandomString, getScrollPosition, getSelectedText, getStyle, getWindowSize, hasClass, isArray, isBankCard, isBoolean, isBrowser, isCarNumber, isChinese, isChineseProvince, isDate, isDateString, isDecimal, isEmail, isError, isFloat, isFullScreen, isFunction, isHtml, isIMEI, isIdCard, isImageUrl, isInteger, isIpv4, isIpv6, isMacAddress, isMap, isMobile, isMobileNumer, isNegativeInteger, isNewEnergyCar, isNull, isNumber, isNumberOrLetter, isObject, isOnlyLetter, isOnlyNumber, isPetrolCar, isPositiveInteger, isPostalCode, isPromise, isRailwayNumber, isRegExp, isSet, isShow, isString, isSubnetMask, isSymbol, isTelPhone, isURL, isUndefined, isVersion, isVideoUrl, isWeakMap, isWeakSet, isWeiXin, _loaclStorage as local, obj2Url, parseDate, readClipboard, removeAttr, removeClass, removeCookie, removeTag, selectText, _sessionStorage as session, setAttr, setCookie, setStyle, url2Obj, urlUtils };
+export { $, $$, EventBus, Pubsub, Storage, addClass, base64ToBlob, base64ToFile, copyText, datatypes, deepClone, diffDays, downloadImage, elShow, event, exitFullScreen, fileToBase64, formatDate, formatPassTime, fullScreen, getAttr, getAttrKV, getAttrList, getAuthor, getBrowserInfo, getBrowserLanguage, getClass, getCookie, getImageSizeByFile, getImageSizeByUrl, getOS, getQueryString, getRandomColor, getRandomInt, getRandomString, getScrollPosition, getSelectedText, getStyle, getUrlParams, getWindowSize, hasClass, isArray, isBankCard, isBoolean, isBrowser, isCarNumber, isChinese, isChineseProvince, isDate, isDateString, isDecimal, isEmail, isError, isFloat, isFullScreen, isFunction, isHtml, isIMEI, isIdCard, isImageUrl, isInteger, isIpv4, isIpv6, isMacAddress, isMap, isMobile, isMobileNumer, isNegativeInteger, isNewEnergyCar, isNull, isNumber, isNumberOrLetter, isObject, isOnlyLetter, isOnlyNumber, isPetrolCar, isPositiveInteger, isPostalCode, isPromise, isRailwayNumber, isRegExp, isSet, isShow, isString, isSubnetMask, isSymbol, isTelPhone, isURL, isUndefined, isVersion, isVideoUrl, isWeakMap, isWeakSet, isWeiXin, _loaclStorage as local, notice, obj2Url, parseDate, printPage, readClipboard, removeAttr, removeClass, removeCookie, removeTag, selectText, _sessionStorage as session, setAttr, setCookie, setStyle, url2Obj };
