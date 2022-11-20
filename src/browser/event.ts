@@ -57,6 +57,6 @@ const off = <T extends ElementTypes>(
  * console.log('click');
  * });
  */
-const event = { on, off };
+const Event = { on, off };
 
-export { event };
+export { Event };

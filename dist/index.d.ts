@@ -102,7 +102,7 @@ declare const getBrowserLanguage: () => string;
 /**
  * @function printPage
  * @description 浏览器打印
- * @example print()
+ * @example printPage()
  * @see https://developer.mozilla.org/zh-CN/docs/Web/API/Window/print
  */
 declare const printPage: () => void;
@@ -332,12 +332,12 @@ declare type ElementTypes = {
  * console.log('click');
  * });
  */
-declare const event: {
+declare const Event: {
     on: <T extends ElementTypes>(el: T, type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions) => void;
     off: <T_1 extends ElementTypes>(el: T_1, type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions) => void;
 };
 
-declare const notice: {
+declare const Notice: {
     send: (title: string, options?: NotificationOptions) => Promise<Notification>;
     confirm: (message: string, sure: () => void, cancel: () => void) => void;
 };
@@ -609,7 +609,6 @@ declare const EventBus: {
      * @function off
      * @description 取消订阅事件
      * @param {string} type 事件名称，可不传，不传取消所有
-     * @param {function} callback 回调函数，可不传，不传取消所有
      * @example
      * EventBus.off('login')
      * EventBus.off()
@@ -1164,4 +1163,4 @@ declare const base64ToFile: (dataurl: string, filename: string) => File;
  */
 declare const base64ToBlob: (dataurl: string) => Blob;
 
-export { $, $$, EventBus, Pubsub, Storage, addClass, base64ToBlob, base64ToFile, copyText, datatypes, deepClone, diffDays, downloadImage, elShow, event, exitFullScreen, fileToBase64, formatDate, formatPassTime, fullScreen, getAttr, getAttrKV, getAttrList, getAuthor, getBrowserInfo, getBrowserLanguage, getClass, getCookie, getImageSizeByFile, getImageSizeByUrl, getOS, getQueryString, getRandomColor, getRandomInt, getRandomString, getScrollPosition, getSelectedText, getStyle, getUrlParams, getWindowSize, hasClass, isArray, isBankCard, isBoolean, isBrowser, isCarNumber, isChinese, isChineseProvince, isDate, isDateString, isDecimal, isEmail, isError, isFloat, isFullScreen, isFunction, isHtml, isIMEI, isIdCard, isImageUrl, isInteger, isIpv4, isIpv6, isMacAddress, isMap, isMobile, isMobileNumer, isNegativeInteger, isNewEnergyCar, isNull, isNumber, isNumberOrLetter, isObject, isOnlyLetter, isOnlyNumber, isPetrolCar, isPositiveInteger, isPostalCode, isPromise, isRailwayNumber, isRegExp, isSet, isShow, isString, isSubnetMask, isSymbol, isTelPhone, isURL, isUndefined, isVersion, isVideoUrl, isWeakMap, isWeakSet, isWeiXin, _loaclStorage as local, notice, obj2Url, parseDate, printPage, readClipboard, removeAttr, removeClass, removeCookie, removeTag, selectText, _sessionStorage as session, setAttr, setCookie, setStyle, url2Obj };
+export { $, $$, Event, EventBus, Notice, Pubsub, Storage, addClass, base64ToBlob, base64ToFile, copyText, datatypes, deepClone, diffDays, downloadImage, elShow, exitFullScreen, fileToBase64, formatDate, formatPassTime, fullScreen, getAttr, getAttrKV, getAttrList, getAuthor, getBrowserInfo, getBrowserLanguage, getClass, getCookie, getImageSizeByFile, getImageSizeByUrl, getOS, getQueryString, getRandomColor, getRandomInt, getRandomString, getScrollPosition, getSelectedText, getStyle, getUrlParams, getWindowSize, hasClass, isArray, isBankCard, isBoolean, isBrowser, isCarNumber, isChinese, isChineseProvince, isDate, isDateString, isDecimal, isEmail, isError, isFloat, isFullScreen, isFunction, isHtml, isIMEI, isIdCard, isImageUrl, isInteger, isIpv4, isIpv6, isMacAddress, isMap, isMobile, isMobileNumer, isNegativeInteger, isNewEnergyCar, isNull, isNumber, isNumberOrLetter, isObject, isOnlyLetter, isOnlyNumber, isPetrolCar, isPositiveInteger, isPostalCode, isPromise, isRailwayNumber, isRegExp, isSet, isShow, isString, isSubnetMask, isSymbol, isTelPhone, isURL, isUndefined, isVersion, isVideoUrl, isWeakMap, isWeakSet, isWeiXin, _loaclStorage as local, obj2Url, parseDate, printPage, readClipboard, removeAttr, removeClass, removeCookie, removeTag, selectText, _sessionStorage as session, setAttr, setCookie, setStyle, url2Obj };

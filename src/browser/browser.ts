@@ -238,7 +238,7 @@ const getBrowserLanguage = (): string => {
 /**
  * @function printPage
  * @description 浏览器打印
- * @example print()
+ * @example printPage()
  * @see https://developer.mozilla.org/zh-CN/docs/Web/API/Window/print
  */
 const printPage = (): void => {

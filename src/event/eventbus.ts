@@ -40,7 +40,6 @@ const EventBus = {
    * @function off
    * @description 取消订阅事件
    * @param {string} type 事件名称，可不传，不传取消所有
-   * @param {function} callback 回调函数，可不传，不传取消所有
    * @example
    * EventBus.off('login')
    * EventBus.off()

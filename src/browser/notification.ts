@@ -60,6 +60,6 @@ const confirm = (message: string, sure: () => void, cancel: () => void) => {
   else cancel && cancel();
 };
 
-const notice = { send, confirm };
+const Notice = { send, confirm };
 
-export { notice };
+export { Notice };
