@@ -1,5 +1,7 @@
 //处理数字
 import { isNumber } from 'src/datatype';
+type StringOrother<T> = T extends number ? string : T;
+type NumberOrother<T> = T extends string ? number : T;
 /**
  * @function toFixed
  * @description 保留小数位数，四舍五入
@@ -11,7 +13,7 @@ import { isNumber } from 'src/datatype';
  */
 const toFixed = (num: number, fixed = 2): number => {
   if (!isNumber(num)) return num;
-  else return Number(num.toFixed(fixed));
+  else return Math.round((num + Number.EPSILON) * Math.pow(10, fixed)) / Math.pow(10, fixed);
 };
 
 /**
@@ -23,7 +25,6 @@ const toFixed = (num: number, fixed = 2): number => {
  * toThousands(123456789) //123,456,789
  * toThousands(123456789.123) //123,456,789.123
  */
-type StringOrother<T> = T extends number ? string : T;
 const toThousands = (num: number): StringOrother<unknown> => {
   if (!isNumber(num)) return num;
   else {
@@ -58,7 +59,6 @@ const numberToPercent = (num: number, fixed = 2): StringOrother<unknown> => {
  * @example
  * percentToNumber('12.35%') //0.1235
  */
-type NumberOrother<T> = T extends string ? number : T;
 const percentToNumber = (percent: string): NumberOrother<unknown> => {
   if (isNumber(parseFloat(percent)) && percent.indexOf('%') > -1) {
     return parseFloat(percent) / 100;
