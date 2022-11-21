@@ -1,7 +1,6 @@
 //处理数字
 import { isNumber } from 'src/datatype';
-type StringOrother<T> = T extends number ? string : T;
-type NumberOrother<T> = T extends string ? number : T;
+import { StringOrother, NumberOrother } from 'src/.internal/types';
 /**
  * @function toFixed
  * @description 保留小数位数，四舍五入

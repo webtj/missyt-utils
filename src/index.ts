@@ -8,3 +8,5 @@ export * from './random';
 export * from './regrule';
 export * from './function';
 export * from './filestream';
+export * from './data';
+export * from './network';

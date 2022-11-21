@@ -1,3 +1,5 @@
+import { StringOrother, NumberOrother } from 'src/.internal/types';
+
 /**
  * @function getAuthor
  * @description 获取作者信息
@@ -1163,4 +1165,74 @@ declare const base64ToFile: (dataurl: string, filename: string) => File;
  */
 declare const base64ToBlob: (dataurl: string) => Blob;
 
-export { $, $$, Event, EventBus, Notice, Pubsub, Storage, addClass, base64ToBlob, base64ToFile, copyText, datatypes, deepClone, diffDays, downloadImage, elShow, exitFullScreen, fileToBase64, formatDate, formatPassTime, fullScreen, getAttr, getAttrKV, getAttrList, getAuthor, getBrowserInfo, getBrowserLanguage, getClass, getCookie, getImageSizeByFile, getImageSizeByUrl, getOS, getQueryString, getRandomColor, getRandomInt, getRandomString, getScrollPosition, getSelectedText, getStyle, getUrlParams, getWindowSize, hasClass, isArray, isBankCard, isBoolean, isBrowser, isCarNumber, isChinese, isChineseProvince, isDate, isDateString, isDecimal, isEmail, isError, isFloat, isFullScreen, isFunction, isHtml, isIMEI, isIdCard, isImageUrl, isInteger, isIpv4, isIpv6, isMacAddress, isMap, isMobile, isMobileNumer, isNegativeInteger, isNewEnergyCar, isNull, isNumber, isNumberOrLetter, isObject, isOnlyLetter, isOnlyNumber, isPetrolCar, isPositiveInteger, isPostalCode, isPromise, isRailwayNumber, isRegExp, isSet, isShow, isString, isSubnetMask, isSymbol, isTelPhone, isURL, isUndefined, isVersion, isVideoUrl, isWeakMap, isWeakSet, isWeiXin, _loaclStorage as local, obj2Url, parseDate, printPage, readClipboard, removeAttr, removeClass, removeCookie, removeTag, selectText, _sessionStorage as session, setAttr, setCookie, setStyle, url2Obj };
+/**
+ * @function toFixed
+ * @description 保留小数位数，四舍五入
+ * @param {number} num 数字
+ * @param {number} fixed 保留小数位数,默认2位
+ * @returns {number} 返回处理后的数字
+ * @example
+ * toFixed(1.23756,2) //1.23
+ */
+declare const toFixed: (num: number, fixed?: number) => number;
+/**
+ * @function toThousands
+ * @description 数字转千分位
+ * @param {number} num 数字
+ * @returns {string} 返回千分位数字
+ * @example
+ * toThousands(123456789) //123,456,789
+ * toThousands(123456789.123) //123,456,789.123
+ */
+declare const toThousands: (num: number) => StringOrother<unknown>;
+/**
+ * @function numberToPercent
+ * @description 数字转百分比
+ * @param {number} num 数字
+ * @param {number} fixed 保留小数位数,默认2位
+ * @returns {string} 返回百分比
+ * @example
+ * numberToPercent(0.123456,2) //12.35%
+ */
+declare const numberToPercent: (num: number, fixed?: number) => StringOrother<unknown>;
+/**
+ * @function percentToNumber
+ * @description 百分比转数字
+ * @param {string} percent 百分比
+ * @returns {number} 返回数字或者原值
+ * @example
+ * percentToNumber('12.35%') //0.1235
+ */
+declare const percentToNumber: (percent: string) => NumberOrother<unknown>;
+/**
+ * @function scientificToNumber
+ * @description 科学计数法转数字
+ * @param {string} num 科学计数法
+ * @returns {number} 返回数字或者原值
+ * @example
+ * scientificToNumber('1.23456e+7') //12345600
+ * scientificToNumber('1.23456e-7') //0.000000123456
+ */
+declare const scientificToNumber: (num: number) => number;
+
+/**
+ * @function getObjKeys
+ * @description 获取对象的所有键
+ * @param {object} obj
+ * @returns {string[]}
+ * @example
+ * getObjKeys({a: 1, b: 2}) // ['a', 'b']
+ */
+declare const getObjKeys: (obj: object) => string[];
+/**
+ * @function isEmptyObject
+ * @description 判断对象是否为空
+ * @param {object} obj
+ * @returns {boolean}
+ * @example
+ * isEmptyObject({}) // true
+ * isEmptyObject({a: 1}) // false
+ */
+declare const isEmptyObject: (obj: object) => boolean;
+
+export { $, $$, Event, EventBus, Notice, Pubsub, Storage, addClass, base64ToBlob, base64ToFile, copyText, datatypes, deepClone, diffDays, downloadImage, elShow, exitFullScreen, fileToBase64, formatDate, formatPassTime, fullScreen, getAttr, getAttrKV, getAttrList, getAuthor, getBrowserInfo, getBrowserLanguage, getClass, getCookie, getImageSizeByFile, getImageSizeByUrl, getOS, getObjKeys, getQueryString, getRandomColor, getRandomInt, getRandomString, getScrollPosition, getSelectedText, getStyle, getUrlParams, getWindowSize, hasClass, isArray, isBankCard, isBoolean, isBrowser, isCarNumber, isChinese, isChineseProvince, isDate, isDateString, isDecimal, isEmail, isEmptyObject, isError, isFloat, isFullScreen, isFunction, isHtml, isIMEI, isIdCard, isImageUrl, isInteger, isIpv4, isIpv6, isMacAddress, isMap, isMobile, isMobileNumer, isNegativeInteger, isNewEnergyCar, isNull, isNumber, isNumberOrLetter, isObject, isOnlyLetter, isOnlyNumber, isPetrolCar, isPositiveInteger, isPostalCode, isPromise, isRailwayNumber, isRegExp, isSet, isShow, isString, isSubnetMask, isSymbol, isTelPhone, isURL, isUndefined, isVersion, isVideoUrl, isWeakMap, isWeakSet, isWeiXin, _loaclStorage as local, numberToPercent, obj2Url, parseDate, percentToNumber, printPage, readClipboard, removeAttr, removeClass, removeCookie, removeTag, scientificToNumber, selectText, _sessionStorage as session, setAttr, setCookie, setStyle, toFixed, toThousands, url2Obj };
