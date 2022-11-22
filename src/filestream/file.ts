@@ -48,4 +48,16 @@ const base64ToBlob = (dataurl: string): Blob => {
   return new Blob([u8arr], { type: mime });
 };
 
-export { fileToBase64, base64ToFile, base64ToBlob };
+/**
+ * @function getFileSuffix
+ * @description 获取文件后缀
+ * @param {string} filename 文件名
+ * @returns {string} 返回文件后缀
+ * @example getFileSuffix('test.png') // => 'png'
+ */
+const getFileSuffix = (filename: string): string => {
+  const index = filename.lastIndexOf('.');
+  return filename.substring(index + 1);
+};
+
+export { fileToBase64, base64ToFile, base64ToBlob, getFileSuffix };
