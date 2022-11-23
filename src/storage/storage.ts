@@ -1,7 +1,7 @@
 import { isBrowser } from '../browser';
 import { isNumber } from '../datatype';
 /**
- * @function Storage
+ * @class Storage
  * @description Storage类
  * @param {string} type 类型，local | session
  * @param {string} prefix 前缀，可选

@@ -60,4 +60,24 @@ const getFileSuffix = (filename: string): string => {
   return filename.substring(index + 1);
 };
 
-export { fileToBase64, base64ToFile, base64ToBlob, getFileSuffix };
+/**
+ * @function formatFileSize
+ * @description 格式化文件大小，转换成带单位的字符串
+ * @param {number} size 文件大小，单位字节
+ * @param {number} precision 保留的小数点长度 默认保留2位小数
+ * @returns {string} 返回带单位的文件大小
+ * @example formatFileSize(1024) // => '1.00KB'
+ * @example formatFileSize(1024, 3) // => '1.000KB'
+ * @example formatFileSize(1024 * 1024) // => '1.00MB'
+ */
+const formatFileSize = (size: number, precision = 2): string => {
+  const units = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+  let unit = 0;
+  while (size >= 1024) {
+    size /= 1024;
+    unit++;
+  }
+  return size.toFixed(precision) + units[unit];
+};
+
+export { fileToBase64, base64ToFile, base64ToBlob, getFileSuffix, formatFileSize };
