@@ -137,6 +137,20 @@ declare const isWeiXin: () => boolean;
  * @example isMobile() // => true
  */
 declare const isMobile: () => boolean;
+/**
+ * @function isAppleDevice
+ * @description 判断是否为苹果设备
+ * @returns {boolean} 返回判断结果
+ * @example isAppleDevice() // => true
+ */
+declare const isApple: () => boolean;
+/**
+ * @function isAndroid
+ * @description 判断是否为安卓设备
+ * @returns {boolean} 返回判断结果
+ * @example isAndroid() // => true
+ */
+declare const isAndroid: () => boolean;
 
 /**
  * @function $
@@ -581,6 +595,7 @@ declare const datatypes: {
 };
 
 declare type EmptyFunction = () => void;
+declare type paramsFunction = (param: any, ...arg: []) => void;
 
 /**
  * @var EventBus
@@ -750,7 +765,7 @@ declare const setCookie: (name: string, value: string, expires?: number, path?: 
 declare const removeCookie: (name: string, path?: string, domain?: string) => void;
 
 /**
- * @function Storage
+ * @class Storage
  * @description Storage类
  * @param {string} type 类型，local | session
  * @param {string} prefix 前缀，可选
@@ -1164,6 +1179,25 @@ declare const base64ToFile: (dataurl: string, filename: string) => File;
  * @returns {blob} 返回blob
  */
 declare const base64ToBlob: (dataurl: string) => Blob;
+/**
+ * @function getFileSuffix
+ * @description 获取文件后缀
+ * @param {string} filename 文件名
+ * @returns {string} 返回文件后缀
+ * @example getFileSuffix('test.png') // => 'png'
+ */
+declare const getFileSuffix: (filename: string) => string;
+/**
+ * @function formatFileSize
+ * @description 格式化文件大小，转换成带单位的字符串
+ * @param {number} size 文件大小，单位字节
+ * @param {number} precision 保留的小数点长度 默认保留2位小数
+ * @returns {string} 返回带单位的文件大小
+ * @example formatFileSize(1024) // => '1.00KB'
+ * @example formatFileSize(1024, 3) // => '1.000KB'
+ * @example formatFileSize(1024 * 1024) // => '1.00MB'
+ */
+declare const formatFileSize: (size: number, precision?: number) => string;
 
 /**
  * @function toFixed
@@ -1235,4 +1269,159 @@ declare const getObjKeys: (obj: object) => string[];
  */
 declare const isEmptyObject: (obj: object) => boolean;
 
-export { $, $$, Event, EventBus, Notice, Pubsub, Storage, addClass, base64ToBlob, base64ToFile, copyText, datatypes, deepClone, diffDays, downloadImage, elShow, exitFullScreen, fileToBase64, formatDate, formatPassTime, fullScreen, getAttr, getAttrKV, getAttrList, getAuthor, getBrowserInfo, getBrowserLanguage, getClass, getCookie, getImageSizeByFile, getImageSizeByUrl, getOS, getObjKeys, getQueryString, getRandomColor, getRandomInt, getRandomString, getScrollPosition, getSelectedText, getStyle, getUrlParams, getWindowSize, hasClass, isArray, isBankCard, isBoolean, isBrowser, isCarNumber, isChinese, isChineseProvince, isDate, isDateString, isDecimal, isEmail, isEmptyObject, isError, isFloat, isFullScreen, isFunction, isHtml, isIMEI, isIdCard, isImageUrl, isInteger, isIpv4, isIpv6, isMacAddress, isMap, isMobile, isMobileNumer, isNegativeInteger, isNewEnergyCar, isNull, isNumber, isNumberOrLetter, isObject, isOnlyLetter, isOnlyNumber, isPetrolCar, isPositiveInteger, isPostalCode, isPromise, isRailwayNumber, isRegExp, isSet, isShow, isString, isSubnetMask, isSymbol, isTelPhone, isURL, isUndefined, isVersion, isVideoUrl, isWeakMap, isWeakSet, isWeiXin, _loaclStorage as local, numberToPercent, obj2Url, parseDate, percentToNumber, printPage, readClipboard, removeAttr, removeClass, removeCookie, removeTag, scientificToNumber, selectText, _sessionStorage as session, setAttr, setCookie, setStyle, toFixed, toThousands, url2Obj };
+/**
+ * @function capitalize
+ * @description 首字母大写
+ * @param {String} str
+ * @returns {String}
+ * @example capitalize('hello') // => 'Hello'
+ */
+declare const capitalize: (str: string) => string;
+/**
+ * @function camelize
+ * @description 字符串改驼峰
+ * @param {String} str
+ * @returns {String}
+ * @example camelize('hello-world') // => 'helloWorld'
+ * camelize('hello_world') // => 'helloWorld'
+ * camelize('hello world') // => 'helloWorld'
+ * camelize('helloWorld') // => 'helloWorld'
+ */
+declare const camelize: (str: string) => string;
+/**
+ * @function insertStr
+ * @description 指定下标插入字符串
+ * @param {String} str 原字符串
+ * @param {Number} index 下标
+ * @param {Number} index 插入字符串
+ * @returns {String}
+ * @example insertStr('hello', 5, ' world') // => 'hello world'
+ */
+declare const insertStr: (str: string, index: number, value: string) => string;
+/**
+ * @function str2Unicode
+ * @description 字符串转unicode
+ * @param {String} str
+ * @returns {String}
+ * @example str2Unicode('hello') // => '\\u0068\\u0065\\u006c\\u006c\\u006f'
+ */
+declare const str2Unicode: (str: string) => string;
+/**
+ * @function unicode2Str
+ * @description unicode转字符串
+ * @param {String} str
+ * @returns {String}
+ * @example unicode2Str('\\u0068\\u0065\\u006c\\u006c\\u006f') // => 'hello'
+ */
+declare const unicode2Str: (unicodeStr: string) => string;
+/**
+ * @function trim
+ * @description 去除字符串空格
+ * @param {String} str
+ * @param {String} type all-所有空格 before-前后空格 after-后空格 default-前后空格
+ * @returns {String} 新的字符串
+ * @example
+ * trim(' hello world ', 'all') // => 'helloworld'
+ * trim(' hello world ', 'before') // => 'hello world '
+ * trim(' hello world ', 'after') // => ' hello world'
+ * trim(' hello world ') // => 'hello world'
+ */
+declare const trim: (str: string, type?: string) => string;
+/**
+ * @function str2Base64
+ * @description 字符串转base64
+ * @param {String} str 原字符串
+ * @returns {String}
+ * @example
+ * str2Base64('hello world') // => 'aGVsbG8gd29ybGQ='
+ */
+declare const str2Base64: (str: string) => string;
+/**
+ * @function base642Str
+ * @description base64转字符串
+ * @param {String} str 原字符串
+ * @returns {String}
+ * @example
+ * base642Str('aGVsbG8gd29ybGQ=') // => 'hello world'
+ */
+declare const base642Str: (str: string) => string;
+
+/**
+ * @function isEmptyArray
+ * @description 判断是否是空数组
+ * @param {Array} arr
+ * @returns {boolean}
+ * @example
+ * isEmptyArray([]) // true
+ * isEmptyArray([1]) // false
+ */
+declare const isEmptyArray: (arr: any[]) => boolean;
+
+declare type WebSocketOptions = {
+    url: string;
+    onOpen?: paramsFunction;
+    onMessage?: paramsFunction;
+    onError?: paramsFunction;
+    onClose?: paramsFunction;
+    reconnectable?: boolean;
+    reconnectInterval?: number;
+    reconnectTimes?: number;
+    heartbeatable?: boolean;
+    heartbeatsInterval?: number;
+    heartbeatsMsg?: string;
+};
+/**
+ * @class Socket
+ * @description websocket封装
+ * @param {object} options 配置项
+ * @param {string} options.url websocket地址
+ * @param {function} options.onOpen 连接成功回调
+ * @param {function} options.onMessage 接收消息回调
+ * @param {function} options.onError 连接错误回调
+ * @param {function} options.onClose 连接关闭回调
+ * @param {boolean} options.reconnectable 是否重连
+ * @param {number} options.reconnectInterval 重连间隔
+ * @param {number} options.reconnectTimes 重连次数
+ * @param {boolean} options.heartbeatable 是否心跳
+ * @param {number} options.heartbeatsInterval 心跳间隔
+ * @param {string} options.heartbeatsMsg 心跳消息
+ * @returns {void}
+ * @example
+ * const socket = new Socket({
+ *  url: 'ws://localhost:8080',
+ *  onOpen: () => {
+ *    console.log('连接成功');
+ *  },
+ *  onMessage: (e) => {
+ *    console.log('接收消息', e);
+ *  },
+ *  onError: (e) => {
+ *   console.log('连接错误', e);
+ *  },
+ *  onClose: (e) => {
+ *   console.log('连接关闭', e);
+ *  },
+ *  reconnectable: true,
+ *  reconnectInterval: 1000,
+ *  reconnectTimes: 10,
+ *  heartbeatable: true,
+ *  heartbeatsInterval: 1000,
+ *  heartbeatsMsg: 'ping',
+ *  });
+ */
+declare class Socket {
+    private ws;
+    private options;
+    private reconnectTimer;
+    private heartbeatTimer;
+    constructor(options: WebSocketOptions);
+    private init;
+    private registerEvent;
+    private heartbeat;
+    private reconnect;
+    send(data: any): void;
+    close(): void;
+    destroy(): void;
+}
+
+export { $, $$, Event, EventBus, Notice, Pubsub, Socket, Storage, addClass, base642Str, base64ToBlob, base64ToFile, camelize, capitalize, copyText, datatypes, deepClone, diffDays, downloadImage, elShow, exitFullScreen, fileToBase64, formatDate, formatFileSize, formatPassTime, fullScreen, getAttr, getAttrKV, getAttrList, getAuthor, getBrowserInfo, getBrowserLanguage, getClass, getCookie, getFileSuffix, getImageSizeByFile, getImageSizeByUrl, getOS, getObjKeys, getQueryString, getRandomColor, getRandomInt, getRandomString, getScrollPosition, getSelectedText, getStyle, getUrlParams, getWindowSize, hasClass, insertStr, isAndroid, isApple, isArray, isBankCard, isBoolean, isBrowser, isCarNumber, isChinese, isChineseProvince, isDate, isDateString, isDecimal, isEmail, isEmptyArray, isEmptyObject, isError, isFloat, isFullScreen, isFunction, isHtml, isIMEI, isIdCard, isImageUrl, isInteger, isIpv4, isIpv6, isMacAddress, isMap, isMobile, isMobileNumer, isNegativeInteger, isNewEnergyCar, isNull, isNumber, isNumberOrLetter, isObject, isOnlyLetter, isOnlyNumber, isPetrolCar, isPositiveInteger, isPostalCode, isPromise, isRailwayNumber, isRegExp, isSet, isShow, isString, isSubnetMask, isSymbol, isTelPhone, isURL, isUndefined, isVersion, isVideoUrl, isWeakMap, isWeakSet, isWeiXin, _loaclStorage as local, numberToPercent, obj2Url, parseDate, percentToNumber, printPage, readClipboard, removeAttr, removeClass, removeCookie, removeTag, scientificToNumber, selectText, _sessionStorage as session, setAttr, setCookie, setStyle, str2Base64, str2Unicode, toFixed, toThousands, trim, unicode2Str, url2Obj };
