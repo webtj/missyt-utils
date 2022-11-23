@@ -59,4 +59,24 @@ const isMobile = (): boolean => {
   return /(iPhone|iPod|Android|ios|iOS|iPad|Backerry|WebOS|Symbian|Windows Phone|Phone)/i.test(navigator.userAgent);
 };
 
-export { getOS, isWeiXin, isMobile, isBrowser };
+/**
+ * @function isAppleDevice
+ * @description 判断是否为苹果设备
+ * @returns {boolean} 返回判断结果
+ * @example isAppleDevice() // => true
+ */
+const isApple = (): boolean => {
+  return /(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent);
+};
+
+/**
+ * @function isAndroid
+ * @description 判断是否为安卓设备
+ * @returns {boolean} 返回判断结果
+ * @example isAndroid() // => true
+ */
+const isAndroid = (): boolean => {
+  return /(Android)/i.test(navigator.userAgent);
+};
+
+export { getOS, isWeiXin, isMobile, isBrowser, isApple, isAndroid };
