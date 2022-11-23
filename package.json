@@ -10,7 +10,9 @@
     "dist"
   ],
   "keyworks": [
-    "missyt-utils"
+    "missyt-utils",
+    "missyt",
+    "utils"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
