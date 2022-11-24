@@ -1,6 +1,7 @@
 # missyt-utils是什么？
 
 ## 请参考[开发文档](https://webtj.github.io/missyt-utils/)
+## [国内Gitee](https://gitee.com/lazy_tj/missyt-utils)
 
 [missyt-utils](https://github.com/webtj/missyt-utils/)是一个`作者自认为`常用js代码工具库，一个`高级前端工程师`不屑写的工具库，不管别人怎么看，但至少方便了自己。
 
