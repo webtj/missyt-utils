@@ -70,12 +70,12 @@ class Socket {
     const { url } = this.options;
     if (!url) throw new Error('url is required');
     this.ws = new WebSocket(url);
-    this.registerEvent();
   }
 
   private registerEvent() {
     const { onOpen, onMessage, onError, onClose, heartbeatable, reconnectable } = this.options;
     this.ws?.addEventListener('open', (event) => {
+      if (this.reconnectTimer) clearInterval(this.reconnectTimer);
       onOpen && onOpen(event);
       heartbeatable && this.heartbeat();
     });
