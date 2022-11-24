@@ -7,6 +7,13 @@ import { StringOrother, NumberOrother } from 'src/.internal/types';
  * @example getAuthor() // => 'author'
  */
 declare const getAuthor: () => string;
+/**
+ * @function getVersion
+ * @description 获取版本号
+ * @returns {string} 返回版本号
+ * @example getVersion() // => '1.0.0'
+ */
+declare const getVersion: () => string;
 
 /**
  * @function getBrowserInfo
@@ -1424,4 +1431,4 @@ declare class Socket {
     destroy(): void;
 }
 
-export { $, $$, Event, EventBus, Notice, Pubsub, Socket, Storage, addClass, base642Str, base64ToBlob, base64ToFile, camelize, capitalize, copyText, datatypes, deepClone, diffDays, downloadImage, elShow, exitFullScreen, fileToBase64, formatDate, formatFileSize, formatPassTime, fullScreen, getAttr, getAttrKV, getAttrList, getAuthor, getBrowserInfo, getBrowserLanguage, getClass, getCookie, getFileSuffix, getImageSizeByFile, getImageSizeByUrl, getOS, getObjKeys, getQueryString, getRandomColor, getRandomInt, getRandomString, getScrollPosition, getSelectedText, getStyle, getUrlParams, getWindowSize, hasClass, insertStr, isAndroid, isApple, isArray, isBankCard, isBoolean, isBrowser, isCarNumber, isChinese, isChineseProvince, isDate, isDateString, isDecimal, isEmail, isEmptyArray, isEmptyObject, isError, isFloat, isFullScreen, isFunction, isHtml, isIMEI, isIdCard, isImageUrl, isInteger, isIpv4, isIpv6, isMacAddress, isMap, isMobile, isMobileNumer, isNegativeInteger, isNewEnergyCar, isNull, isNumber, isNumberOrLetter, isObject, isOnlyLetter, isOnlyNumber, isPetrolCar, isPositiveInteger, isPostalCode, isPromise, isRailwayNumber, isRegExp, isSet, isShow, isString, isSubnetMask, isSymbol, isTelPhone, isURL, isUndefined, isVersion, isVideoUrl, isWeakMap, isWeakSet, isWeiXin, _loaclStorage as local, numberToPercent, obj2Url, parseDate, percentToNumber, printPage, readClipboard, removeAttr, removeClass, removeCookie, removeTag, scientificToNumber, selectText, _sessionStorage as session, setAttr, setCookie, setStyle, str2Base64, str2Unicode, toFixed, toThousands, trim, unicode2Str, url2Obj };
+export { $, $$, Event, EventBus, Notice, Pubsub, Socket, Storage, addClass, base642Str, base64ToBlob, base64ToFile, camelize, capitalize, copyText, datatypes, deepClone, diffDays, downloadImage, elShow, exitFullScreen, fileToBase64, formatDate, formatFileSize, formatPassTime, fullScreen, getAttr, getAttrKV, getAttrList, getAuthor, getBrowserInfo, getBrowserLanguage, getClass, getCookie, getFileSuffix, getImageSizeByFile, getImageSizeByUrl, getOS, getObjKeys, getQueryString, getRandomColor, getRandomInt, getRandomString, getScrollPosition, getSelectedText, getStyle, getUrlParams, getVersion, getWindowSize, hasClass, insertStr, isAndroid, isApple, isArray, isBankCard, isBoolean, isBrowser, isCarNumber, isChinese, isChineseProvince, isDate, isDateString, isDecimal, isEmail, isEmptyArray, isEmptyObject, isError, isFloat, isFullScreen, isFunction, isHtml, isIMEI, isIdCard, isImageUrl, isInteger, isIpv4, isIpv6, isMacAddress, isMap, isMobile, isMobileNumer, isNegativeInteger, isNewEnergyCar, isNull, isNumber, isNumberOrLetter, isObject, isOnlyLetter, isOnlyNumber, isPetrolCar, isPositiveInteger, isPostalCode, isPromise, isRailwayNumber, isRegExp, isSet, isShow, isString, isSubnetMask, isSymbol, isTelPhone, isURL, isUndefined, isVersion, isVideoUrl, isWeakMap, isWeakSet, isWeiXin, _loaclStorage as local, numberToPercent, obj2Url, parseDate, percentToNumber, printPage, readClipboard, removeAttr, removeClass, removeCookie, removeTag, scientificToNumber, selectText, _sessionStorage as session, setAttr, setCookie, setStyle, str2Base64, str2Unicode, toFixed, toThousands, trim, unicode2Str, url2Obj };
