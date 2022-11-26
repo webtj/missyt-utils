@@ -145,10 +145,10 @@ declare const isWeiXin: () => boolean;
  */
 declare const isMobile: () => boolean;
 /**
- * @function isAppleDevice
+ * @function isApple
  * @description 判断是否为苹果设备
  * @returns {boolean} 返回判断结果
- * @example isAppleDevice() // => true
+ * @example isApple() // => true
  */
 declare const isApple: () => boolean;
 /**
@@ -360,6 +360,14 @@ declare const Event: {
     off: <T_1 extends ElementTypes>(el: T_1, type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions) => void;
 };
 
+/**
+ * @var {object} notice
+ * @description 浏览器通知
+ * @property {Function} send 发送通知
+ * @property {Function} confirm 弹窗确认
+ * @example Notice.send('通知标题', { body: '通知内容' }) // => void
+ * @example Notice.confirm('确认删除吗？', () => { console.log('确认') }, () => { console.log('取消') }) // => void
+ */
 declare const Notice: {
     send: (title: string, options?: NotificationOptions) => Promise<Notification>;
     confirm: (message: string, sure: () => void, cancel: () => void) => void;
@@ -560,46 +568,6 @@ declare const isWeakSet: (value: unknown) => boolean;
  * isPromise(() => {}) => false
  */
 declare const isPromise: (value: unknown) => boolean;
-/**
- * @var datatypes
- * @description 数据类型检查集合
- * @property isNumber 判断是否为数字
- * @property isString 判断是否为字符串
- * @property isBoolean 判断是否为布尔值
- * @property isNull 判断是否为null
- * @property isUndefined 判断是否为undefined
- * @property isSymbol 判断是否为Symbol
- * @property isObject 判断是否为对象
- * @property isFunction 判断是否为函数
- * @property isArray 判断是否为数组
- * @property isDate 判断是否为日期
- * @property isRegExp 判断是否为正则
- * @property isError 判断是否为错误对象
- * @property isMap 判断是否为Map
- * @property isWeakMap 判断是否为WeakMap
- * @property isSet 判断是否为Set
- * @property isWeakSet 判断是否为WeakSet
- * @property isPromise 判断是否为Promise
- */
-declare const datatypes: {
-    isNumber: (value: unknown, isFinite?: boolean) => boolean;
-    isString: (value: unknown) => boolean;
-    isBoolean: (value: unknown) => boolean;
-    isNull: (value: unknown) => boolean;
-    isUndefined: (value: unknown) => boolean;
-    isSymbol: (value: unknown) => boolean;
-    isObject: (value: unknown) => boolean;
-    isFunction: (value: unknown) => boolean;
-    isArray: (value: unknown) => boolean;
-    isDate: (value: unknown) => boolean;
-    isRegExp: (value: unknown) => boolean;
-    isError: (value: unknown) => boolean;
-    isMap: (value: unknown) => boolean;
-    isWeakMap: (value: unknown) => boolean;
-    isSet: (value: unknown) => boolean;
-    isWeakSet: (value: unknown) => boolean;
-    isPromise: (value: unknown) => boolean;
-};
 
 declare type EmptyFunction = () => void;
 declare type paramsFunction = (param: any, ...arg: []) => void;
@@ -607,6 +575,14 @@ declare type paramsFunction = (param: any, ...arg: []) => void;
 /**
  * @var EventBus
  * @description 事件总线
+ * @property {Object} callbacks - 事件回调函数
+ * @property {Function} on - 注册事件
+ * @property {Function} off - 注销事件
+ * @property {Function} emit - 触发事件
+ * @example
+ * EventBus.on('login',data=>{})
+ * EventBus.emit('login',{name:'张三'})
+ * EventBus.off('login')
  */
 declare const EventBus: {
     callbacks: {};
@@ -653,6 +629,15 @@ declare const EventBus: {
 /**
  * @var Pubsub
  * @description 发布订阅模式
+ * @property {object} callbacks 事件回调函数集合
+ * @property {function} subscribe 订阅事件
+ * @property {function} publish 发布事件
+ * @property {function} unsubscribe 取消订阅事件
+ * @example
+ * let pid = Pubsub.subscribe('login',data=>{})
+ * Pubsub.publish('login',{name:'张三'})
+ * Pubsub.unsubscribe(pid)
+ * Pubsub.unsubscribe()
  */
 declare const Pubsub: {
     id: number;
@@ -684,9 +669,8 @@ declare const Pubsub: {
      * Pubsub.unsubscribe('login') //指定channel
      * Pubsub.unsubscribe('token_101')  //指定pid
      * Pubsub.unsubscribe() //取消所有
-     * @param flag
      */
-    unscribe: (flag: string) => void;
+    unsubscribe: (flag: string) => void;
 };
 
 declare type Datetype = string | number | Date;
@@ -1170,6 +1154,13 @@ declare const getImageSizeByFile: (file: Blob) => Promise<unknown>;
  */
 declare const downloadImage: (url: string, name: string) => void;
 
+/**
+ * @function fileToBase64
+ * @description file转base64
+ * @param {file} file 文件
+ * @returns {string} 返回base64
+ * @example fileToBase64(file).then(base64 => console.log(base64))
+ */
 declare const fileToBase64: (file: Blob) => Promise<unknown>;
 /**
  * @function base64ToFile
@@ -1307,7 +1298,7 @@ declare const camelize: (str: string) => string;
 declare const insertStr: (str: string, index: number, value: string) => string;
 /**
  * @function str2Unicode
- * @description 字符串转unicode
+ * @description str2Unicode
  * @param {String} str
  * @returns {String}
  * @example str2Unicode('hello') // => '\\u0068\\u0065\\u006c\\u006c\\u006f'
@@ -1431,4 +1422,4 @@ declare class Socket {
     destroy(): void;
 }
 
-export { $, $$, Event, EventBus, Notice, Pubsub, Socket, Storage, addClass, base642Str, base64ToBlob, base64ToFile, camelize, capitalize, copyText, datatypes, deepClone, diffDays, downloadImage, elShow, exitFullScreen, fileToBase64, formatDate, formatFileSize, formatPassTime, fullScreen, getAttr, getAttrKV, getAttrList, getAuthor, getBrowserInfo, getBrowserLanguage, getClass, getCookie, getFileSuffix, getImageSizeByFile, getImageSizeByUrl, getOS, getObjKeys, getQueryString, getRandomColor, getRandomInt, getRandomString, getScrollPosition, getSelectedText, getStyle, getUrlParams, getVersion, getWindowSize, hasClass, insertStr, isAndroid, isApple, isArray, isBankCard, isBoolean, isBrowser, isCarNumber, isChinese, isChineseProvince, isDate, isDateString, isDecimal, isEmail, isEmptyArray, isEmptyObject, isError, isFloat, isFullScreen, isFunction, isHtml, isIMEI, isIdCard, isImageUrl, isInteger, isIpv4, isIpv6, isMacAddress, isMap, isMobile, isMobileNumer, isNegativeInteger, isNewEnergyCar, isNull, isNumber, isNumberOrLetter, isObject, isOnlyLetter, isOnlyNumber, isPetrolCar, isPositiveInteger, isPostalCode, isPromise, isRailwayNumber, isRegExp, isSet, isShow, isString, isSubnetMask, isSymbol, isTelPhone, isURL, isUndefined, isVersion, isVideoUrl, isWeakMap, isWeakSet, isWeiXin, _loaclStorage as local, numberToPercent, obj2Url, parseDate, percentToNumber, printPage, readClipboard, removeAttr, removeClass, removeCookie, removeTag, scientificToNumber, selectText, _sessionStorage as session, setAttr, setCookie, setStyle, str2Base64, str2Unicode, toFixed, toThousands, trim, unicode2Str, url2Obj };
+export { $, $$, Event, EventBus, Notice, Pubsub, Socket, Storage, addClass, base642Str, base64ToBlob, base64ToFile, camelize, capitalize, copyText, deepClone, diffDays, downloadImage, elShow, exitFullScreen, fileToBase64, formatDate, formatFileSize, formatPassTime, fullScreen, getAttr, getAttrKV, getAttrList, getAuthor, getBrowserInfo, getBrowserLanguage, getClass, getCookie, getFileSuffix, getImageSizeByFile, getImageSizeByUrl, getOS, getObjKeys, getQueryString, getRandomColor, getRandomInt, getRandomString, getScrollPosition, getSelectedText, getStyle, getUrlParams, getVersion, getWindowSize, hasClass, insertStr, isAndroid, isApple, isArray, isBankCard, isBoolean, isBrowser, isCarNumber, isChinese, isChineseProvince, isDate, isDateString, isDecimal, isEmail, isEmptyArray, isEmptyObject, isError, isFloat, isFullScreen, isFunction, isHtml, isIMEI, isIdCard, isImageUrl, isInteger, isIpv4, isIpv6, isMacAddress, isMap, isMobile, isMobileNumer, isNegativeInteger, isNewEnergyCar, isNull, isNumber, isNumberOrLetter, isObject, isOnlyLetter, isOnlyNumber, isPetrolCar, isPositiveInteger, isPostalCode, isPromise, isRailwayNumber, isRegExp, isSet, isShow, isString, isSubnetMask, isSymbol, isTelPhone, isURL, isUndefined, isVersion, isVideoUrl, isWeakMap, isWeakSet, isWeiXin, _loaclStorage as local, numberToPercent, obj2Url, parseDate, percentToNumber, printPage, readClipboard, removeAttr, removeClass, removeCookie, removeTag, scientificToNumber, selectText, _sessionStorage as session, setAttr, setCookie, setStyle, str2Base64, str2Unicode, toFixed, toThousands, trim, unicode2Str, url2Obj };
