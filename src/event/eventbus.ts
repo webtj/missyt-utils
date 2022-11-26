@@ -2,6 +2,14 @@ import { EmptyFunction } from '../.internal/types';
 /**
  * @var EventBus
  * @description 事件总线
+ * @property {Object} callbacks - 事件回调函数
+ * @property {Function} on - 注册事件
+ * @property {Function} off - 注销事件
+ * @property {Function} emit - 触发事件
+ * @example
+ * EventBus.on('login',data=>{})
+ * EventBus.emit('login',{name:'张三'})
+ * EventBus.off('login')
  */
 const EventBus = {
   callbacks: {},

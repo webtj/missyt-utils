@@ -12,6 +12,15 @@
 /**
  * @var Pubsub
  * @description 发布订阅模式
+ * @property {object} callbacks 事件回调函数集合
+ * @property {function} subscribe 订阅事件
+ * @property {function} publish 发布事件
+ * @property {function} unsubscribe 取消订阅事件
+ * @example
+ * let pid = Pubsub.subscribe('login',data=>{})
+ * Pubsub.publish('login',{name:'张三'})
+ * Pubsub.unsubscribe(pid)
+ * Pubsub.unsubscribe()
  */
 const Pubsub = {
   id: 100, //订阅的唯一编号
@@ -54,9 +63,8 @@ const Pubsub = {
    * Pubsub.unsubscribe('login') //指定channel
    * Pubsub.unsubscribe('token_101')  //指定pid
    * Pubsub.unsubscribe() //取消所有
-   * @param flag
    */
-  unscribe: function (flag: string) {
+  unsubscribe: function (flag: string) {
     //channel 或 pid 或undefind
     if (!flag) this.callbacks = {};
     else if (typeof flag === 'string') {

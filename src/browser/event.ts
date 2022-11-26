@@ -13,6 +13,19 @@ type ElementTypes = {
   detachEvent: (type: string, listener: EventListenerOrEventListenerObject) => void;
 };
 
+/**
+ * @function on
+ * @description 事件监听
+ * @param {Element} el
+ * @param {string} type 事件类型
+ * @param {EventListenerOrEventListenerObject} listener 事件监听函数
+ * @param {boolean | AddEventListenerOptions} options
+ * @returns {void}
+ * @example
+ * on(document, 'click', () => {
+ *  console.log('click');
+ * });
+ */
 const on = <T extends ElementTypes>(
   el: T,
   type: string,
@@ -28,6 +41,19 @@ const on = <T extends ElementTypes>(
   }
 };
 
+/**
+ * @function off
+ * @description 事件移除
+ * @param {Element} el
+ * @param {string} type 事件类型
+ * @param {EventListenerOrEventListenerObject} listener 事件监听函数
+ * @param {boolean | EventListenerOptions} options
+ * @returns {void}
+ * @example
+ * off(document, 'click', () => {
+ * console.log('click');
+ * });
+ */
 const off = <T extends ElementTypes>(
   el: T,
   type: string,

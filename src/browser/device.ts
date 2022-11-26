@@ -60,10 +60,10 @@ const isMobile = (): boolean => {
 };
 
 /**
- * @function isAppleDevice
+ * @function isApple
  * @description 判断是否为苹果设备
  * @returns {boolean} 返回判断结果
- * @example isAppleDevice() // => true
+ * @example isApple() // => true
  */
 const isApple = (): boolean => {
   return /(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent);

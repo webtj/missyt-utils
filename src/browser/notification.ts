@@ -22,8 +22,8 @@
  * @param {string} options.actions 通知操作
  * @param {string} options.data 通知数据
  * @return {Promise} 返回通知结果
- * @example notice.send('通知标题', { body: '通知内容' }) // => void
- * @example notice.send('通知标题', { body: '通知内容', icon: '通知图标' }) // => void
+ * @example Notice.send('通知标题', { body: '通知内容' }) // => void
+ * @example Notice.send('通知标题', { body: '通知内容', icon: '通知图标' }) // => void
  */
 const send = (title: string, options?: NotificationOptions): Promise<Notification> => {
   return new Promise((resolve, reject) => {
@@ -53,13 +53,21 @@ const send = (title: string, options?: NotificationOptions): Promise<Notificatio
  * @param {string} message 弹窗确认内容
  * @param {Function} sure 确认回调
  * @param {Function} cancel 取消回调
- * @example notice.confirm('确认删除吗？', () => { console.log('确认') }, () => { console.log('取消') }) // => void
+ * @example Notice.confirm('确认删除吗？', () => { console.log('确认') }, () => { console.log('取消') }) // => void
  */
 const confirm = (message: string, sure: () => void, cancel: () => void) => {
   if (window.confirm(message)) sure && sure();
   else cancel && cancel();
 };
 
+/**
+ * @var {object} notice
+ * @description 浏览器通知
+ * @property {Function} send 发送通知
+ * @property {Function} confirm 弹窗确认
+ * @example Notice.send('通知标题', { body: '通知内容' }) // => void
+ * @example Notice.confirm('确认删除吗？', () => { console.log('确认') }, () => { console.log('取消') }) // => void
+ */
 const Notice = { send, confirm };
 
 export { Notice };
