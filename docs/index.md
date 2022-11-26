@@ -11,7 +11,7 @@ hero:
   actions:
     - theme: brand
       text: 快速上手 ->
-      link: /guide/
+      link: /guide/first/
     - theme: alt
       text: 提提 issues
       link: https://github.com/webtj/missyt-utils/issues

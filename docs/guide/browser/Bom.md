@@ -2,7 +2,7 @@
 
 ## isBrowser
 > 判断是否为浏览器环境
-```javascript
+```js
 /**
  * @var isBrowser
  * @description 判断是否为浏览器环境
@@ -14,7 +14,7 @@
 
 ## getBrowserInfo
 > 获取当前浏览器信息
-```javascript
+```js
 /**
  * @function getBrowserInfo
  * @description 获取浏览器信息
@@ -27,7 +27,7 @@
 
 ## isFullScreen
 > 判断是否为全屏
-```javascript
+```js
 /**
  * @function isFullScreen
  * @description 判断是否全屏
@@ -39,7 +39,7 @@
 
 ## fullScreen
 > 设置某个元素全屏
-```javascript
+```js
 /**
  * @function fullScreen
  * @description 使某个元素全屏
@@ -51,7 +51,7 @@
 
 ## exitFullScreen
 > 退出全屏模式
-```javascript
+```js
 /**
  * @function exitFullScreen
  * @description 退出全屏
@@ -63,7 +63,7 @@
 
 ## getWindowSize
 > 获取窗口size
-```javascript
+```js
 /**
  * @function getWindowSize
  * @description 获取窗口宽高
@@ -74,7 +74,7 @@
 
 ## getScrollPosition
 > 获取滚动条位置
-```javascript
+```js
 /**
  * @function getScrollPosition
  * @description 获取滚动条位置
@@ -85,7 +85,7 @@
 
 ## copyText
 > 复制文本
-```javascript
+```js
 /**
  * @function copyText
  * @description 复制文本
@@ -96,7 +96,7 @@
 
 ## readClipboard
 > 读取粘贴板
-```javascript
+```js
 /**
  * @function readClipboard
  * @description 读取剪贴板，需要用户触发事件
@@ -109,7 +109,7 @@
 
 ## selectText
 > 选中节点文本
-```javascript
+```js
 /**
  * @function selectText
  * @description 选中文本
@@ -122,7 +122,7 @@
 
 ## getSelectedText
 > 获取选中的数据
-```javascript
+```js
 /**
  * @function getSelectionText
  * @description 获取选中的文本
@@ -131,6 +131,25 @@
  */
 ```
 
+## getBrowserLanguage
+> 获取浏览器语言
+```js
+/**
+ * @function getBrowserLanguage
+ * @description 获取浏览器语言
+ * @returns {string} 返回浏览器语言
+ * @example getBrowserLanguage() // => 'zh-CN'
+ */
+```
 
-
+## printPage
+> 打印当前页面
+```js
+/**
+ * @function printPage
+ * @description 浏览器打印
+ * @see https://developer.mozilla.org/zh-CN/docs/Web/API/Window/print
+ * @example printPage()
+ */
+```
 

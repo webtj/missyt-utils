@@ -4,10 +4,10 @@
 > 深拷贝
 ```javascript
 /**
- * @funcs deepClone
- * @param {object} obj 待复制的对象
- * @param {WeakMap} cache  循环引用内存溢出，使用WeakMap缓存
- * @return {Object} 拷贝后的对象
+ * @function deepClone
+ * @description 深克隆
+ * @param {any} obj 要克隆的对象
+ * @returns {any} 克隆后的对象
  */
   let person = { name: 'hello', hobby: { name: '篮球', time: 3 } };
   let _copy = deepClone(person);

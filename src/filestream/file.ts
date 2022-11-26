@@ -1,4 +1,10 @@
-//file转base64
+/**
+ * @function fileToBase64
+ * @description file转base64
+ * @param {file} file 文件
+ * @returns {string} 返回base64
+ * @example fileToBase64(file).then(base64 => console.log(base64))
+ */
 const fileToBase64 = (file: Blob) => {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();

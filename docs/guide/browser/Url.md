@@ -1,8 +1,8 @@
 # 🥕  Url相关操作
 
 ## getQueryString
-> 获取url参数
-```javascript
+> 获取url指定key参数
+```js
 /**
  * @function getQueryString
  * @description 获取url参数
@@ -13,9 +13,22 @@
  */
 ```
 
+## getUrlParams
+> 获取url所有参数
+```js
+/**
+ * @function getUrlParams
+ * @description 获取url所有参数对象
+ * @param {String} url url 默认为当前页面url
+ * @returns {Object} params object
+ * @example 
+ * getUrlParams('https://www.baidu.com?id=1&name=xx') // => { id: '1', name: 'xx' }
+ */
+```
+
 ## url2Obj
 > url参数转object
-```javascript
+```js
 /**
  * @function url2Obj
  * @description url转对象
@@ -27,7 +40,7 @@
 
 ## obj2Url
 > 对象拼接成url参数 ?x=1&x-123
-```javascript
+```js
 /**
  * @function obj2Url
  * @description 对象转url
