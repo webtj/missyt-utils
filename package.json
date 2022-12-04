@@ -12,7 +12,10 @@
   "keyworks": [
     "missyt-utils",
     "missyt",
-    "utils"
+    "utils",
+    "tools",
+    "javascript",
+    "typescript"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -26,7 +29,7 @@
     "type": "git",
     "url": "git+https://github.com/webtj/missyt-utils.git"
   },
-  "author": "taojian",
+  "author": "taojian<taojian@petalmail.com>",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.19.6",
@@ -49,8 +52,5 @@
     "rollup-plugin-typescript2": "^0.34.1",
     "typescript": "^4.8.4",
     "vitepress": "^1.0.0-alpha.26"
-  },
-  "dependencies": {
-    "@types/node": "^18.11.9"
   }
 }

@@ -835,14 +835,14 @@ declare class Storage {
  * @example
  * _loaclStorage.set('key','zhangsan'); //设置
  */
-declare const _loaclStorage: Storage;
+declare const _loaclStorage: Storage | null;
 /**
  * @var _sessionStorage as session
  * @description sessionstorage 实例化对象
  * @example
  * _sessionStorage.set('key','zhangsan'); //设置
  */
-declare const _sessionStorage: Storage;
+declare const _sessionStorage: Storage | null;
 
 /**
  * @function getRandomColor

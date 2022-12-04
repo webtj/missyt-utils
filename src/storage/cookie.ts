@@ -10,7 +10,7 @@ import { isNumber } from '../datatype';
  * @example getCookie('name')
  */
 const getCookie = (name: string): string | null => {
-  if (!isBrowser) throw new Error('getCookie is only available in browser');
+  if (!isBrowser()) throw new Error('getCookie is only available in browser');
   if (!name || !document.cookie) return null;
   const reg = new RegExp(`(^| )${name}=([^;]*)(;|$)`);
   const arr = document.cookie.match(reg);
@@ -32,7 +32,7 @@ const getCookie = (name: string): string | null => {
  * setCookie('name','zhangsan',1,'/','www.baidu.com')
  */
 const setCookie = (name: string, value: string, expires = 0, path = '/', domain = ''): void => {
-  if (!isBrowser) throw new Error('setCookie is only available in browser');
+  if (!isBrowser()) throw new Error('setCookie is only available in browser');
   if (!name || !document.cookie) return;
   let cookieText = `${name}=${value}`;
   if (isNumber(expires)) {
@@ -57,7 +57,7 @@ const setCookie = (name: string, value: string, expires = 0, path = '/', domain 
  * removeCookie('name','/','www.baidu.com')
  */
 const removeCookie = (name: string, path = '/', domain = '') => {
-  if (!isBrowser) throw new Error('removeCookie is only available in browser');
+  if (!isBrowser()) throw new Error('removeCookie is only available in browser');
   if (!name || !document.cookie) return;
   setCookie(name, '', -1, path, domain);
 };

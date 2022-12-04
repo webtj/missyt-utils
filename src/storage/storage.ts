@@ -20,7 +20,7 @@ class Storage {
   _watcher = {};
   storage;
   constructor(storage = 'local', prefix = '') {
-    if (!isBrowser) throw new Error('get is only available in browser');
+    if (!isBrowser()) throw new Error('get is only available in browser');
     this.storage = storage === 'local' ? window.localStorage : window.sessionStorage;
     this.prefix = prefix;
   }
@@ -143,7 +143,7 @@ class Storage {
  * @example
  * _loaclStorage.set('key','zhangsan'); //设置
  */
-const _loaclStorage = new Storage('local');
+const _loaclStorage = isBrowser() ? new Storage('local') : null;
 
 /**
  * @var _sessionStorage as session
@@ -151,6 +151,6 @@ const _loaclStorage = new Storage('local');
  * @example
  * _sessionStorage.set('key','zhangsan'); //设置
  */
-const _sessionStorage = new Storage('session');
+const _sessionStorage = isBrowser() ? new Storage('session') : null;
 
 export { _loaclStorage as local, _sessionStorage as session, Storage };
